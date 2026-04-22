@@ -2,10 +2,10 @@
   "@context": "/api/3/contexts/Workflow",
   "@type": "Workflow",
   "triggerLimit": null,
-  "name": "Clone VM (Sample)",
+  "name": "Get Next VMID",
   "aliasName": null,
   "tag": null,
-  "description": "Sample: Clones a VM from a template (Clone VM). Adjust node, template VMID, new VMID and name, or pass them via variables.",
+  "description": "Sample: Gets the next available VMID (Get Next VMID) from the configured Proxmox instance.",
   "isActive": true,
   "debug": true,
   "singleRecordExecution": false,
@@ -14,14 +14,14 @@
   "synchronous": false,
   "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
   "versions": [],
-  "triggerStep": "/api/3/workflow_steps/a3b3c3d3-e3f3-4333-a333-333333333331",
+  "triggerStep": "/api/3/workflow_steps/a2b2c2d2-e2f2-4222-a222-222222222221",
   "steps": [
     {
       "@type": "WorkflowStep",
       "name": "Start",
       "description": null,
       "arguments": {
-        "route": "b3b3c3d3-e3f3-4333-a333-333333333332",
+        "route": "b2b2c2d2-e2f2-4222-a222-222222222222",
         "resources": [],
         "__triggerLimit": true,
         "inputVariables": [],
@@ -29,7 +29,10 @@
         "displayConditions": {},
         "executeButtonText": "Execute",
         "noRecordExecution": false,
-        "showToasterMessage": {"visible": false, "messageVisible": true},
+        "showToasterMessage": {
+          "visible": false,
+          "messageVisible": true
+        },
         "triggerOnReplicate": false,
         "singleRecordExecution": true
       },
@@ -38,27 +41,20 @@
       "left": "300",
       "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
       "group": null,
-      "uuid": "a3b3c3d3-e3f3-4333-a333-333333333331"
+      "uuid": "a2b2c2d2-e2f2-4222-a222-222222222221"
     },
     {
       "@type": "WorkflowStep",
-      "name": "Clone VM",
+      "name": "Get Next VMID",
       "description": null,
       "arguments": {
-        "name": "API Connector Proxmox",
+        "name": "Proxmox",
         "config": "",
-        "params": {
-          "node": "pve",
-          "vmid": 9000,
-          "newid": 100,
-          "name": "sample-vm",
-          "storage": "local-lvm",
-          "full": true
-        },
+        "params": {},
         "version": "1.0.0",
-        "connector": "API Connector Proxmox",
-        "operation": "clone_vm",
-        "operationTitle": "Clone VM",
+        "connector": "Proxmox",
+        "operation": "get_next_vmid",
+        "operationTitle": "Get Next VMID",
         "pickFromTenant": false,
         "step_variables": []
       },
@@ -67,26 +63,26 @@
       "left": "300",
       "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
       "group": null,
-      "uuid": "a3b3c3d3-e3f3-4333-a333-333333333333"
+      "uuid": "a2b2c2d2-e2f2-4222-a222-222222222223"
     }
   ],
   "routes": [
     {
       "@type": "WorkflowRoute",
-      "name": "Start -> Clone VM",
-      "targetStep": "/api/3/workflow_steps/a3b3c3d3-e3f3-4333-a333-333333333333",
-      "sourceStep": "/api/3/workflow_steps/a3b3c3d3-e3f3-4333-a333-333333333331",
+      "name": "Start -> Get Next VMID",
+      "targetStep": "/api/3/workflow_steps/a2b2c2d2-e2f2-4222-a222-222222222223",
+      "sourceStep": "/api/3/workflow_steps/a2b2c2d2-e2f2-4222-a222-222222222221",
       "label": null,
       "isExecuted": false,
       "group": null,
-      "uuid": "b3b3c3d3-e3f3-4333-a333-333333333332"
+      "uuid": "b2b2c2d2-e2f2-4222-a222-222222222222"
     }
   ],
   "groups": [],
   "priority": null,
   "playbookOrigin": null,
   "isEditable": true,
-  "uuid": "c3b3c3d3-e3f3-4333-a333-333333333331",
+  "uuid": "c2b2c2d2-e2f2-4222-a222-222222222221",
   "owners": [],
   "isPrivate": false,
   "deletedAt": null,

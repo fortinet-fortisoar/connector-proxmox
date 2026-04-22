@@ -29,7 +29,10 @@
         "displayConditions": {},
         "executeButtonText": "Execute",
         "noRecordExecution": false,
-        "showToasterMessage": {"visible": false, "messageVisible": true},
+        "showToasterMessage": {
+          "visible": false,
+          "messageVisible": true
+        },
         "triggerOnReplicate": false,
         "singleRecordExecution": true
       },
@@ -45,14 +48,14 @@
       "name": "Stop VM",
       "description": null,
       "arguments": {
-        "name": "API Connector Proxmox",
+        "name": "Proxmox",
         "config": "",
         "params": {
           "node": "pve",
           "vmid": 100
         },
         "version": "1.0.0",
-        "connector": "API Connector Proxmox",
+        "connector": "Proxmox",
         "operation": "stop_vm",
         "operationTitle": "Stop VM",
         "pickFromTenant": false,
@@ -70,7 +73,7 @@
       "name": "Destroy VM",
       "description": null,
       "arguments": {
-        "name": "API Connector Proxmox",
+        "name": "Proxmox",
         "config": "",
         "params": {
           "node": "pve",
@@ -78,7 +81,7 @@
           "purge": true
         },
         "version": "1.0.0",
-        "connector": "API Connector Proxmox",
+        "connector": "Proxmox",
         "operation": "destroy_vm",
         "operationTitle": "Destroy VM",
         "pickFromTenant": false,

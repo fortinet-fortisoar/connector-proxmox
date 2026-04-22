@@ -1,4 +1,10 @@
-# -*- coding: utf-8 -*-
+"""
+Copyright start
+MIT License
+Copyright (c) 2026 Fortinet Inc
+Copyright end
+"""
+
 """
 API Connector Proxmox - FortiSOAR native connector.
 Proxmox VE REST API with token authentication.

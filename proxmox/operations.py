@@ -1,4 +1,10 @@
-# -*- coding: utf-8 -*-
+"""
+Copyright start
+MIT License
+Copyright (c) 2026 Fortinet Inc
+Copyright end
+"""
+
 """
 API Connector Proxmox - operations.
 Proxmox VE REST API calls with token authentication.
