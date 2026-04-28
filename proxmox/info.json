@@ -6,6 +6,8 @@
   "publisher": "Fortinet",
   "cs_approved": false,
   "cs_compatible": true,
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
   "category": "Compute Platform",
   "contributor": "Michael Ibe",
   "help_online": "",
