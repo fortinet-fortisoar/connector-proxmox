@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-API Connector Proxmox - FortiSOAR native connector.
+Proxmox VE Hypervisor - FortiSOAR native connector.
 Proxmox VE REST API with token authentication.
 """
 
 from connectors.core.connector import Connector, get_logger, ConnectorError
 from .operations import operations, _check_health
 
-logger = get_logger("API Connector Proxmox")
+logger = get_logger("Proxmox VE Hypervisor")
 
 
 class ProxmoxApiConnector(Connector):
@@ -17,7 +17,9 @@ class ProxmoxApiConnector(Connector):
             op = operations.get(operation_name)
             if not op:
                 raise ConnectorError("Unknown operation: {}".format(operation_name))
-            result = op(config, params or {})
+            if not isinstance(params, dict):
+                params = {}
+            result = op(config, params)
             return result
         except ConnectorError:
             raise
