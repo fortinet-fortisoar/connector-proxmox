@@ -1,3 +1,10 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2026 Fortinet Inc
+Copyright end
+"""
+
 # -*- coding: utf-8 -*-
 """
 Proxmox VE Hypervisor - operations.
@@ -148,7 +155,8 @@ def clone_vm(config, params):
         "full": 1 if params.get("full", True) else 0,
     }
     out = _request(config, "POST", path, data=data)
-    upid = out.get("data") if isinstance(out.get("data"), str) and (out.get("data") or "").strip().startswith("UPID:") else None
+    upid = out.get("data") if isinstance(out.get("data"), str) and (out.get("data") or "").strip().startswith(
+        "UPID:") else None
     if upid:
         wait_timeout = int(params.get("timeout") or config.get("clone_timeout") or 1800)
         _wait_for_task(config, node, upid.strip(), timeout=wait_timeout, task_label="VM clone")
@@ -183,7 +191,8 @@ def create_container(config, params):
         data["features"] = params.get("features")
     out = _request(config, "POST", path, data=data)
     # Create is async: wait for task so container config exists, then set features via config API
-    upid = out.get("data") if isinstance(out.get("data"), str) and (out.get("data") or "").strip().startswith("UPID:") else None
+    upid = out.get("data") if isinstance(out.get("data"), str) and (out.get("data") or "").strip().startswith(
+        "UPID:") else None
     if upid:
         try:
             _wait_for_task(config, node, upid.strip(), task_label="Container create")
@@ -542,13 +551,13 @@ def _format_disks_summary(cfg):
             continue
         # QEMU: ide0, scsi0, sata0, virtio0; LXC: rootfs, mp0, mp1; unused
         is_disk = (
-            k == "rootfs"
-            or k.startswith("ide")
-            or k.startswith("scsi")
-            or k.startswith("sata")
-            or k.startswith("virtio")
-            or k.startswith("unused")
-            or (k.startswith("mp") and (len(k) == 2 or (len(k) > 2 and k[2:].isdigit())))
+                k == "rootfs"
+                or k.startswith("ide")
+                or k.startswith("scsi")
+                or k.startswith("sata")
+                or k.startswith("virtio")
+                or k.startswith("unused")
+                or (k.startswith("mp") and (len(k) == 2 or (len(k) > 2 and k[2:].isdigit())))
         )
         if is_disk:
             storage = None

@@ -48,14 +48,14 @@
             "name": "Stop VM",
             "description": null,
             "arguments": {
-                "name": "Proxmox VE Hypervisor",
+                "name": "Proxmox",
                 "config": "",
                 "params": {
                     "node": "pve",
                     "vmid": 100
                 },
-                "version": "2.0.8",
-                "connector": "proxmox-ve",
+                "version": "1.0.0",
+                "connector": "proxmox",
                 "operation": "stop_vm",
                 "operationTitle": "Stop VM",
                 "pickFromTenant": false,
@@ -73,15 +73,15 @@
             "name": "Destroy VM",
             "description": null,
             "arguments": {
-                "name": "Proxmox VE Hypervisor",
+                "name": "Proxmox",
                 "config": "",
                 "params": {
                     "node": "pve",
                     "vmid": 100,
                     "purge": true
                 },
-                "version": "2.0.8",
-                "connector": "proxmox-ve",
+                "version": "1.0.0",
+                "connector": "proxmox",
                 "operation": "destroy_vm",
                 "operationTitle": "Destroy VM",
                 "pickFromTenant": false,
