@@ -4,23 +4,23 @@
   "label": "Proxmox",
   "description": "Proxmox VE (Virtual Environment) is an open-source server virtualization platform used to manage virtual machines, containers, storage, networking, and clustering through a web-based interface.",
   "publisher": "Fortinet",
+  "contributor": "Michael Ibe",
   "cs_approved": false,
   "cs_compatible": true,
-  "icon_small_name": "small.png",
   "icon_large_name": "large.png",
+  "icon_small_name": "small.png",
   "category": "Compute Platform",
-  "contributor": "Michael Ibe",
   "help_online": "",
   "configuration": {
     "fields": [
       {
         "name": "host",
-        "title": "Hostname",
+        "title": "Hostname/IP",
         "type": "text",
         "editable": true,
         "visible": true,
         "required": true,
-        "placeholder": "Eg. 192.168.1.100",
+        "placeholder": "192.168.1.100",
         "tooltip": "IP address or hostname of the Proxmox VE server",
         "description": "Hostname or IP address of the Proxmox VE server."
       },
@@ -32,19 +32,8 @@
         "visible": true,
         "required": false,
         "value": 8006,
-        "placeholder": "8006",
+        "tooltip": "Proxmox API port (default: 8006).",
         "description": "Proxmox API port (default: 8006)."
-      },
-      {
-        "name": "node",
-        "title": "Default Node Name",
-        "type": "text",
-        "editable": true,
-        "visible": true,
-        "required": false,
-        "placeholder": "pve",
-        "tooltip": "Default node name (for example pve). Used when no node parameter is provided in the playbook.",
-        "description": "Optional default node name for all operations (for example pve)."
       },
       {
         "name": "api_token",
@@ -56,6 +45,17 @@
         "placeholder": "user@pve!tokenid=secret-uuid",
         "tooltip": "PVEAPIToken in the format user@realm!tokenid=secret",
         "description": "Proxmox API token (PVEAPIToken). Format: user@realm!tokenid=secret"
+      },
+      {
+        "name": "node",
+        "title": "Default Node Name",
+        "type": "text",
+        "editable": true,
+        "visible": true,
+        "required": false,
+        "placeholder": "pve",
+        "tooltip": "Default node name (for example pve). Used when no node parameter is provided in the playbook.",
+        "description": "Optional default node name for all operations (for example pve)."
       },
       {
         "name": "verify_ssl",
@@ -109,63 +109,72 @@
       "parameters": [
         {
           "name": "node",
+          "editable": true,
           "title": "Node",
           "type": "text",
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name (for example pve)"
         },
         {
           "name": "vmid",
+          "editable": true,
           "title": "Template VMID",
           "type": "integer",
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the template"
         },
         {
           "name": "newid",
+          "editable": true,
           "title": "New VMID",
           "type": "integer",
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the new VM"
         },
         {
           "name": "name",
+          "editable": true,
           "title": "Name",
           "type": "text",
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Name of the new VM"
         },
         {
           "name": "storage",
+          "editable": true,
           "title": "Storage",
           "type": "text",
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Storage for the VM disk"
         },
         {
           "name": "full",
+          "editable": true,
           "title": "Full Clone",
           "type": "checkbox",
           "required": false,
-          "visible": true,
-          "editable": true,
           "value": true,
+          "visible": true,
           "description": "Full clone (1) or linked clone (0)"
+        },
+        {
+          "name": "timeout",
+          "editable": true,
+          "title": "Clone wait timeout (seconds)",
+          "type": "integer",
+          "required": false,
+          "visible": true,
+          "description": "Max seconds to wait for clone task (default 1800). Increase for large full clones."
         }
       ],
       "output_schema": {
         "upid": "",
-        "data": ""
+        "data": null
       }
     },
     {
@@ -181,102 +190,102 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name"
         },
         {
           "name": "vmid",
           "title": "VMID",
           "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Container VMID"
         },
         {
           "name": "hostname",
           "title": "Hostname",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Hostname of the container"
         },
         {
           "name": "ostemplate",
           "title": "OS Template",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Template (for example local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst)"
         },
         {
           "name": "cores",
           "title": "Cores",
           "type": "integer",
-          "required": false,
-          "visible": true,
           "editable": true,
+          "required": false,
           "value": 2,
+          "visible": true,
           "description": "Number of CPU cores"
         },
         {
           "name": "memory",
           "title": "Memory (MB)",
           "type": "integer",
-          "required": false,
-          "visible": true,
           "editable": true,
+          "required": false,
           "value": 2048,
+          "visible": true,
           "description": "RAM in MB"
         },
         {
           "name": "rootfs",
           "title": "Root FS",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "for example local-lvm:20"
         },
         {
           "name": "net0",
           "title": "Network",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "net0 configuration (name=eth0,bridge=vmbr0,ip=.../24,gw=...)"
         },
         {
           "name": "password",
           "title": "Root Password",
           "type": "password",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Root password"
         },
         {
           "name": "swap",
           "title": "Swap (MB)",
           "type": "integer",
-          "required": false,
-          "visible": true,
           "editable": true,
+          "required": false,
           "value": 0,
+          "visible": true,
           "description": "Swap in MB"
         },
         {
           "name": "nameserver",
           "title": "Nameserver",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "DNS (for example 1.1.1.1)"
         },
         {
@@ -284,24 +293,24 @@
           "title": "Unprivileged",
           "type": "checkbox",
           "required": false,
-          "visible": true,
           "editable": true,
           "value": true,
+          "visible": true,
           "description": "Create unprivileged container (0=privileged, 1=unprivileged). Default true (unprivileged + nesting=1)."
         },
         {
           "name": "features",
           "title": "Features",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "LXC features (e.g. nesting=1). Use nesting=1 for console/nesting support."
         }
       ],
       "output_schema": {
         "upid": "",
-        "data": ""
+        "data": null
       }
     },
     {
@@ -317,27 +326,27 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name"
         },
         {
           "name": "vmid",
           "title": "VMID",
           "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Container VMID"
         },
         {
           "name": "body_params",
           "title": "Body Parameters",
           "type": "json",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Config as JSON (e.g. {\"features\": \"nesting=1\", \"unprivileged\": 0})"
         }
       ],
@@ -356,28 +365,136 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name"
         },
         {
           "name": "vmid",
           "title": "VMID",
           "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the VM"
         },
         {
           "name": "body_params",
           "title": "Body Parameters",
           "type": "json",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Parameters as JSON object (for example ipconfig0, nameserver, ciuser)"
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "resize_vm_disk",
+      "title": "Resize VM Disk",
+      "description": "Resizes a QEMU disk (qm resize). Use target_gb to grow to the requested size, or size for explicit +10G / 32G.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "editable": true,
+          "required": true,
+          "visible": true,
+          "description": "Proxmox node name"
+        },
+        {
+          "name": "vmid",
+          "title": "VMID",
+          "type": "integer",
+          "editable": true,
+          "required": true,
+          "visible": true,
+          "description": "VMID of the VM"
+        },
+        {
+          "name": "disk",
+          "title": "Disk",
+          "type": "text",
+          "editable": true,
+          "required": false,
+          "visible": true,
+          "value": "scsi0",
+          "description": "Disk id (default scsi0)"
+        },
+        {
+          "name": "target_gb",
+          "title": "Target size (GB)",
+          "type": "integer",
+          "visible": true,
+          "required": false,
+          "description": "Grow boot disk to this size in GB (skips if already larger)"
+        },
+        {
+          "name": "assume_current_gb",
+          "title": "Assume current size (GB)",
+          "type": "integer",
+          "editable": true,
+          "required": false,
+          "visible": true,
+          "description": "Fallback when qm config has no readable size (e.g. template default 10)"
+        },
+        {
+          "name": "size",
+          "title": "Size",
+          "type": "text",
+          "editable": true,
+          "required": false,
+          "visible": true,
+          "description": "Explicit resize, e.g. +10G or 32G (used when target_gb is omitted)"
+        },
+        {
+          "name": "timeout",
+          "title": "Resize wait timeout (seconds)",
+          "type": "integer",
+          "editable": true,
+          "required": false,
+          "visible": true,
+          "description": "Max seconds to wait for resize task (default 600)"
+        }
+      ],
+      "output_schema": {
+        "skipped": false,
+        "message": ""
+      }
+    },
+    {
+      "operation": "update_vm_cloudinit",
+      "title": "Update VM Cloud-Init",
+      "description": "Regenerates the cloud-init drive after config changes (qm cloudinit update)",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "editable": true,
+          "required": true,
+          "visible": true,
+          "description": "Proxmox node name"
+        },
+        {
+          "name": "vmid",
+          "title": "VMID",
+          "type": "integer",
+          "editable": true,
+          "required": true,
+          "visible": true,
+          "description": "VMID of the VM"
         }
       ],
       "output_schema": {}
@@ -395,24 +512,24 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name"
         },
         {
           "name": "vmid",
           "title": "VMID",
           "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the VM"
         }
       ],
       "output_schema": {
         "upid": "",
-        "data": ""
+        "data": null
       }
     },
     {
@@ -429,23 +546,23 @@
           "title": "Node",
           "type": "text",
           "required": true,
-          "visible": true,
           "editable": true,
+          "visible": true,
           "description": "Proxmox node name"
         },
         {
           "name": "vmid",
           "title": "VMID",
           "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the VM"
         }
       ],
       "output_schema": {
         "upid": "",
-        "data": ""
+        "data": null
       }
     },
     {
@@ -461,24 +578,24 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name"
         },
         {
           "name": "vmid",
           "title": "VMID",
           "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the container"
         }
       ],
       "output_schema": {
         "upid": "",
-        "data": ""
+        "data": null
       }
     },
     {
@@ -494,24 +611,24 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name"
         },
         {
           "name": "vmid",
           "title": "VMID",
           "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the container"
         }
       ],
       "output_schema": {
         "upid": "",
-        "data": ""
+        "data": null
       }
     },
     {
@@ -527,33 +644,33 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name"
         },
         {
           "name": "vmid",
           "title": "VMID",
           "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the VM"
         },
         {
           "name": "purge",
           "title": "Purge",
           "type": "checkbox",
+          "editable": true,
           "required": false,
           "value": true,
           "visible": true,
-          "editable": true,
           "description": "Also delete unused volumes"
         }
       ],
       "output_schema": {
-        "data": ""
+        "data": null
       }
     },
     {
@@ -569,18 +686,18 @@
           "name": "node",
           "title": "Node",
           "type": "text",
-          "required": true,
-          "visible": true,
           "editable": true,
+          "visible": true,
+          "required": true,
           "description": "Proxmox node name"
         },
         {
           "name": "vmid",
           "title": "VMID",
           "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the container"
         },
         {
@@ -588,14 +705,14 @@
           "title": "Force",
           "type": "checkbox",
           "required": false,
+          "editable": true,
           "value": false,
           "visible": true,
-          "editable": true,
           "description": "Force stop running container before destroying (force=1)"
         }
       ],
       "output_schema": {
-        "data": ""
+        "data": null
       }
     },
     {
@@ -611,31 +728,31 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name (optional, uses connector default if empty)"
         },
         {
           "name": "include_config",
           "title": "Include config",
           "type": "checkbox",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "If true, fetch config (disks, network) for each VM (more API calls)"
         }
       ],
       "output_schema": {
         "data": [
           {
-            "vmid": "",
-            "name": "",
-            "node": "",
-            "status": "",
+            "vmid": null,
+            "name": null,
+            "node": null,
+            "status": null,
             "config": {},
-            "disksSummary": "",
-            "interfacesSummary": ""
+            "disksSummary": null,
+            "interfacesSummary": null
           }
         ]
       }
@@ -653,31 +770,31 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name (optional, uses connector default if empty)"
         },
         {
           "name": "include_config",
           "title": "Include config",
           "type": "checkbox",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "If true, fetch config (disks, network) for each container (more API calls)"
         }
       ],
       "output_schema": {
         "data": [
           {
-            "vmid": "",
-            "name": "",
-            "node": "",
-            "status": "",
+            "vmid": null,
+            "name": null,
+            "node": null,
+            "status": null,
             "config": {},
-            "disksSummary": "",
-            "interfacesSummary": ""
+            "disksSummary": null,
+            "interfacesSummary": null
           }
         ]
       }
@@ -695,18 +812,18 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name (optional, uses connector default if empty)"
         },
         {
           "name": "vmid",
           "title": "VMID",
-          "type": "number",
+          "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the VM"
         }
       ],
@@ -725,18 +842,18 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name (optional, uses connector default if empty)"
         },
         {
           "name": "vmid",
           "title": "VMID",
-          "type": "number",
+          "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the container"
         }
       ],
@@ -755,18 +872,18 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name (optional, uses connector default if empty)"
         },
         {
           "name": "upid",
           "title": "UPID",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Task UPID (for example UPID:pve:00001234:...)",
           "placeholder": "UPID:pve:00001234:5678:90ABCDEF:qmclone:2000:root@pam:"
         }
@@ -799,9 +916,9 @@
           "name": "type",
           "title": "Type Filter",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "placeholder": "node",
           "description": "Optional: node, vm, storage"
         }
@@ -823,18 +940,18 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name (optional, uses connector default if empty)"
         },
         {
           "name": "vmid",
           "title": "VMID",
           "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the VM"
         }
       ],
@@ -853,18 +970,18 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name (optional, uses connector default if empty)"
         },
         {
           "name": "vmid",
           "title": "VMID",
           "type": "integer",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "VMID of the container"
         }
       ],
@@ -883,9 +1000,9 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name (optional, uses connector default if empty)"
         }
       ],
@@ -904,18 +1021,18 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name (optional, uses connector default if empty)"
         },
         {
           "name": "storage",
           "title": "Storage",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "description": "Storage ID (for example local-lvm)"
         }
       ],
@@ -934,27 +1051,27 @@
           "name": "node",
           "title": "Node",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Proxmox node name (optional, uses connector default if empty)"
         },
         {
           "name": "storage",
           "title": "Storage",
           "type": "text",
-          "required": true,
-          "visible": true,
           "editable": true,
+          "visible": true,
+          "required": true,
           "description": "Storage ID (for example local)"
         },
         {
           "name": "content",
           "title": "Content Filter",
           "type": "text",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "placeholder": "vztmpl,iso",
           "description": "Optional: vztmpl, iso, images (comma-separated)"
         }
@@ -976,9 +1093,9 @@
           "name": "method",
           "title": "Method",
           "type": "select",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "options": [
             "GET",
             "POST",
@@ -991,9 +1108,9 @@
           "name": "url_path",
           "title": "URL Path",
           "type": "text",
+          "editable": true,
           "required": true,
           "visible": true,
-          "editable": true,
           "placeholder": "/api2/json/nodes/pve/status",
           "description": "Path starting after /api2/json/ (without leading slash)"
         },
@@ -1001,18 +1118,18 @@
           "name": "body",
           "title": "Body (form)",
           "type": "textarea",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Body for POST/PUT (application/x-www-form-urlencoded)"
         },
         {
           "name": "body_json",
           "title": "Body (JSON)",
           "type": "json",
+          "editable": true,
           "required": false,
           "visible": true,
-          "editable": true,
           "description": "Alternative JSON body (if set, body is ignored)"
         }
       ],
