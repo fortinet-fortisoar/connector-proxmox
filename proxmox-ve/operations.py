@@ -1,3 +1,10 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2026 Fortinet Inc
+Copyright end
+"""
+
 # -*- coding: utf-8 -*-
 """
 API Connector Proxmox - operations.
@@ -50,9 +57,9 @@ def _request(config, method, path, data=None, json_body=None, extra_headers=None
 
     if json_body is not None:
         headers["Content-Type"] = "application/json"
-    
+
     logger.debug(f"Executing API Call: {method} {path}")
-    
+
     try:
         if method.upper() == "GET":
             r = requests.get(url, headers=headers, verify=verify, timeout=30)
@@ -146,7 +153,8 @@ def clone_vm(config, params):
         "full": 1 if params.get("full", True) else 0,
     }
     out = _request(config, "POST", path, data=data)
-    upid = out.get("data") if isinstance(out.get("data"), str) and (out.get("data") or "").strip().startswith("UPID:") else None
+    upid = out.get("data") if isinstance(out.get("data"), str) and (out.get("data") or "").strip().startswith(
+        "UPID:") else None
     if upid:
         wait_timeout = int(params.get("timeout") or config.get("clone_timeout") or 1800)
         _wait_for_task(config, node, upid.strip(), timeout=wait_timeout, task_label="VM clone")
@@ -161,7 +169,7 @@ def migrate_vm(config, params):
     online = params.get("online", False)
     vmid = params.get("vmid")
     if not current_node or not target_node or vmid is None:
-        raise ConnectorError("nodes and vmid are required") 
+        raise ConnectorError("nodes and vmid are required")
     path = f"nodes/{current_node}/qemu/{vmid}/migrate"
     data = {
         "target": target_node,
@@ -169,11 +177,13 @@ def migrate_vm(config, params):
         "with-conntrack-state": 1 if with_conntrack_state else 0
     }
     out = _request(config, "POST", path, data=data)
-    upid = out.get("data") if isinstance(out.get("data"), str) and (out.get("data") or "").strip().startswith("UPID:") else None
+    upid = out.get("data") if isinstance(out.get("data"), str) and (out.get("data") or "").strip().startswith(
+        "UPID:") else None
     if upid:
         wait_timeout = int(params.get("timeout") or 1800)
         _wait_for_task(config, current_node, upid.strip(), timeout=wait_timeout, task_label="VM migrate")
     return out
+
 
 def create_container(config, params):
     """POST /api2/json/nodes/{node}/lxc. After create, applies features (e.g. nesting=1) via config API so they take effect (like legacy scripts)."""
@@ -203,7 +213,8 @@ def create_container(config, params):
         data["features"] = params.get("features")
     out = _request(config, "POST", path, data=data)
     # Create is async: wait for task so container config exists, then set features via config API
-    upid = out.get("data") if isinstance(out.get("data"), str) and (out.get("data") or "").strip().startswith("UPID:") else None
+    upid = out.get("data") if isinstance(out.get("data"), str) and (out.get("data") or "").strip().startswith(
+        "UPID:") else None
     if upid:
         try:
             _wait_for_task(config, node, upid.strip(), task_label="Container create")
@@ -437,7 +448,7 @@ def start_vm(config, params):
     """POST /api2/json/nodes/{node}/qemu/{vmid}/status/start."""
     node = params.get("node")
     vmid = params.get("vmid")
-    vm_status = get_vm_status(config, params) #To fail if the vmID is wrong
+    vm_status = get_vm_status(config, params)  # To fail if the vmID is wrong
     if not node or vmid is None:
         raise ConnectorError("node and vmid are required")
     path = "nodes/{}/qemu/{}/status/start".format(node, vmid)
@@ -484,7 +495,7 @@ def destroy_vm(config, params):
     if params.get("purge", False):
         path += "?purge=1"
     if params.get("destroy-unreferenced-disks", False):
-        path += "&destroy-unreferenced-disks=1"        
+        path += "&destroy-unreferenced-disks=1"
     return _request(config, "DELETE", path)
 
 
@@ -555,13 +566,13 @@ def _format_disks_summary(cfg):
             continue
         # QEMU: ide0, scsi0, sata0, virtio0; LXC: rootfs, mp0, mp1; unused
         is_disk = (
-            k == "rootfs"
-            or k.startswith("ide")
-            or k.startswith("scsi")
-            or k.startswith("sata")
-            or k.startswith("virtio")
-            or k.startswith("unused")
-            or (k.startswith("mp") and (len(k) == 2 or (len(k) > 2 and k[2:].isdigit())))
+                k == "rootfs"
+                or k.startswith("ide")
+                or k.startswith("scsi")
+                or k.startswith("sata")
+                or k.startswith("virtio")
+                or k.startswith("unused")
+                or (k.startswith("mp") and (len(k) == 2 or (len(k) > 2 and k[2:].isdigit())))
         )
         if is_disk:
             storage = None
@@ -730,7 +741,7 @@ def get_cluster_resources(config, params):
 
 def get_vm_status(config, params):
     """GET /api2/json/nodes/{node}/qemu/{vmid}/status/current - detailed status of a VM. Requires VM.Audit."""
-    
+
     node = params.get("node")
     vmid = params.get("vmid")
     if not node or vmid is None:
@@ -796,6 +807,7 @@ def disable_vm_ha(config, params):
     path = f"cluster/ha/resources/vm:{vmid}?purge=1"
     return _request(config, "DELETE", path)
 
+
 def get_cluster_ha_status(config, params):
     """GET /api2/json/cluster/ha/status/current."""
     vmid = params.get("vmid")
@@ -805,6 +817,7 @@ def get_cluster_ha_status(config, params):
         vm_ha_status = next((obj for obj in cluster_ha_status if obj.get("sid") == f"vm:{vmid}"), None)
         return vm_ha_status
     return cluster_ha_status
+
 
 operations = {
     "get_version": get_version,
