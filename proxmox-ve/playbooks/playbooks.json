@@ -4,14 +4,11 @@
     {
       "uuid": "b100c200-d300-e400-f500-617181920212",
       "@type": "WorkflowCollection",
-      "name": "Sample - Proxmox - 1.0.0",
-      "description": "Sample playbooks for Proxmox VE Hypervisor: version, next VMID, list VMs/containers, nodes, task status, clone/create, config, start/stop, destroy, generic API request.",
+      "name": "Sample - API Connector Proxmox - 1.1.0",
+      "description": "Sample playbooks for API Connector Proxmox: version, next VMID, list VMs/containers, nodes, task status, clone/create, config, start/stop, destroy, generic API request.",
       "visible": true,
       "image": null,
-      "recordTags": [
-        "Proxmox VE Hypervisor",
-        "Proxmox"
-      ],
+      "recordTags": ["API Connector Proxmox", "Proxmox"],
       "workflows": [
         {
           "@type": "Workflow",
@@ -20,11 +17,8 @@
           "triggerLimit": null,
           "description": "Sample: Retrieves the Proxmox version (Get Version). Verifies connectivity to the configured Proxmox instance.",
           "name": "Test Proxmox Connection",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -40,7 +34,7 @@
               "status": null,
               "arguments": {
                 "route": "b1b1c1d1-e1f1-4111-a111-111111111112",
-                "title": "Proxmox VE Hypervisor: Test Proxmox Connection",
+                "title": "API Connector Proxmox: Test Proxmox Connection",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -59,11 +53,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
                 "params": {},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "get_version",
                 "operationTitle": "Get Version",
                 "pickFromTenant": false,
@@ -93,11 +87,8 @@
           "triggerLimit": null,
           "description": "Sample: Gets the next available VMID (Get Next VMID) from the configured Proxmox instance.",
           "name": "Get Next VMID",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -113,7 +104,7 @@
               "status": null,
               "arguments": {
                 "route": "b2b2c2d2-e2f2-4222-a222-222222222222",
-                "title": "Proxmox VE Hypervisor: Get Next VMID",
+                "title": "API Connector Proxmox: Get Next VMID",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -132,11 +123,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
                 "params": {},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "get_next_vmid",
                 "operationTitle": "Get Next VMID",
                 "pickFromTenant": false,
@@ -166,11 +157,8 @@
           "triggerLimit": null,
           "description": "Sample: Clones a VM from a template (Clone VM). Adjust node, template VMID, new VMID and name, or pass them via variables.",
           "name": "Clone VM (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -186,7 +174,7 @@
               "status": null,
               "arguments": {
                 "route": "b3b3c3d3-e3f3-4333-a333-333333333332",
-                "title": "Proxmox VE Hypervisor: Clone VM (Sample)",
+                "title": "API Connector Proxmox: Clone VM (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -205,7 +193,7 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
                 "params": {
                   "node": "pve",
@@ -216,7 +204,7 @@
                   "full": true
                 },
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "clone_vm",
                 "operationTitle": "Clone VM",
                 "pickFromTenant": false,
@@ -246,11 +234,8 @@
           "triggerLimit": null,
           "description": "Sample: Stops and deletes a VM (Stop VM, Destroy VM). Adjust VMID and node, or pass them via variables.",
           "name": "Destroy VM (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -266,7 +251,7 @@
               "status": null,
               "arguments": {
                 "route": "b4b4c4d4-e4f4-4444-a444-444444444442",
-                "title": "Proxmox VE Hypervisor: Destroy VM (Sample)",
+                "title": "API Connector Proxmox: Destroy VM (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -285,14 +270,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
-                "params": {
-                  "node": "pve",
-                  "vmid": 100
-                },
+                "params": {"node": "pve", "vmid": 100},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "stop_vm",
                 "operationTitle": "Stop VM",
                 "pickFromTenant": false,
@@ -309,15 +291,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
-                "params": {
-                  "node": "pve",
-                  "vmid": 100,
-                  "purge": true
-                },
+                "params": {"node": "pve", "vmid": 100, "purge": true},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "destroy_vm",
                 "operationTitle": "Destroy VM",
                 "pickFromTenant": false,
@@ -356,11 +334,8 @@
           "triggerLimit": null,
           "description": "Sample: Creates an LXC container (Create Container). Adjust node, VMID, hostname, template and net0.",
           "name": "Create Container (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -376,7 +351,7 @@
               "status": null,
               "arguments": {
                 "route": "b5d5e5f5-a5b5-4555-a555-555555555552",
-                "title": "Proxmox VE Hypervisor: Create Container (Sample)",
+                "title": "API Connector Proxmox: Create Container (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -395,7 +370,7 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
                 "params": {
                   "node": "pve",
@@ -410,7 +385,7 @@
                   "nameserver": "1.1.1.1"
                 },
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "create_container",
                 "operationTitle": "Create Container",
                 "pickFromTenant": false,
@@ -440,11 +415,8 @@
           "triggerLimit": null,
           "description": "Sample: Configures a VM (Configure VM). Adjust body_params such as ipconfig0 and nameserver.",
           "name": "Configure VM (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -460,7 +432,7 @@
               "status": null,
               "arguments": {
                 "route": "b6d6e6f6-a6b6-4666-a666-666666666662",
-                "title": "Proxmox VE Hypervisor: Configure VM (Sample)",
+                "title": "API Connector Proxmox: Configure VM (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -479,18 +451,15 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
                 "params": {
                   "node": "pve",
                   "vmid": 100,
-                  "body_params": {
-                    "ipconfig0": "ip=10.0.0.10/24,gw=10.0.0.1",
-                    "nameserver": "1.1.1.1"
-                  }
+                  "body_params": {"ipconfig0": "ip=10.0.0.10/24,gw=10.0.0.1", "nameserver": "1.1.1.1"}
                 },
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "config_vm",
                 "operationTitle": "Configure VM",
                 "pickFromTenant": false,
@@ -520,11 +489,8 @@
           "triggerLimit": null,
           "description": "Sample: Starts a VM (Start VM). Adjust node and VMID.",
           "name": "Start VM (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -540,7 +506,7 @@
               "status": null,
               "arguments": {
                 "route": "b7d7e7f7-a7b7-4777-a777-777777777772",
-                "title": "Proxmox VE Hypervisor: Start VM (Sample)",
+                "title": "API Connector Proxmox: Start VM (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -559,14 +525,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
-                "params": {
-                  "node": "pve",
-                  "vmid": 100
-                },
+                "params": {"node": "pve", "vmid": 100},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "start_vm",
                 "operationTitle": "Start VM",
                 "pickFromTenant": false,
@@ -596,11 +559,8 @@
           "triggerLimit": null,
           "description": "Sample: Starts an LXC container (Start Container). Adjust node and VMID.",
           "name": "Start Container (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -616,7 +576,7 @@
               "status": null,
               "arguments": {
                 "route": "b8d8e8f8-a8b8-4888-a888-888888888882",
-                "title": "Proxmox VE Hypervisor: Start Container (Sample)",
+                "title": "API Connector Proxmox: Start Container (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -635,14 +595,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
-                "params": {
-                  "node": "pve",
-                  "vmid": 200
-                },
+                "params": {"node": "pve", "vmid": 200},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "start_container",
                 "operationTitle": "Start Container",
                 "pickFromTenant": false,
@@ -672,11 +629,8 @@
           "triggerLimit": null,
           "description": "Sample: Stops an LXC container (Stop Container). Adjust node and VMID.",
           "name": "Stop Container (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -692,7 +646,7 @@
               "status": null,
               "arguments": {
                 "route": "b9d9e9f9-a9b9-4999-a999-999999999992",
-                "title": "Proxmox VE Hypervisor: Stop Container (Sample)",
+                "title": "API Connector Proxmox: Stop Container (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -711,14 +665,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
-                "params": {
-                  "node": "pve",
-                  "vmid": 200
-                },
+                "params": {"node": "pve", "vmid": 200},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "stop_container",
                 "operationTitle": "Stop Container",
                 "pickFromTenant": false,
@@ -748,11 +699,8 @@
           "triggerLimit": null,
           "description": "Sample: Stops and deletes an LXC container (Stop Container, Destroy Container). Adjust VMID and node.",
           "name": "Destroy Container (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -768,7 +716,7 @@
               "status": null,
               "arguments": {
                 "route": "b0d0e0f0-a0b0-4000-a000-000000000002",
-                "title": "Proxmox VE Hypervisor: Destroy Container (Sample)",
+                "title": "API Connector Proxmox: Destroy Container (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -787,14 +735,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
-                "params": {
-                  "node": "pve",
-                  "vmid": 200
-                },
+                "params": {"node": "pve", "vmid": 200},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "stop_container",
                 "operationTitle": "Stop Container",
                 "pickFromTenant": false,
@@ -811,14 +756,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
-                "params": {
-                  "node": "pve",
-                  "vmid": 200
-                },
+                "params": {"node": "pve", "vmid": 200},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "destroy_container",
                 "operationTitle": "Destroy Container",
                 "pickFromTenant": false,
@@ -857,11 +799,8 @@
           "triggerLimit": null,
           "description": "Sample: Generic API request (API Request). Adjust method and url_path, for example GET nodes/pve/status.",
           "name": "API Request Generic (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -877,7 +816,7 @@
               "status": null,
               "arguments": {
                 "route": "b1d1e1f1-a1b1-4111-a111-111111111192",
-                "title": "Proxmox VE Hypervisor: API Request Generic (Sample)",
+                "title": "API Connector Proxmox: API Request Generic (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -896,14 +835,14 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
                 "params": {
                   "method": "GET",
                   "url_path": "nodes/pve/status"
                 },
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "api_request",
                 "operationTitle": "API Request (Generic)",
                 "pickFromTenant": false,
@@ -933,11 +872,8 @@
           "triggerLimit": null,
           "description": "Sample: Lists all VMs on the node (List VMs). Adjust node (for example pve).",
           "name": "List VMs (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -953,7 +889,7 @@
               "status": null,
               "arguments": {
                 "route": "b5b5c5d5-e5f5-4555-a555-555555555552",
-                "title": "Proxmox VE Hypervisor: List VMs (Sample)",
+                "title": "API Connector Proxmox: List VMs (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -972,13 +908,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
-                "params": {
-                  "node": "pve"
-                },
+                "params": {"node": "pve"},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "list_vms",
                 "operationTitle": "List VMs",
                 "pickFromTenant": false,
@@ -1008,11 +942,8 @@
           "triggerLimit": null,
           "description": "Sample: Lists all LXC containers on the node (List Containers). Adjust node (for example pve).",
           "name": "List Containers (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -1028,7 +959,7 @@
               "status": null,
               "arguments": {
                 "route": "b6b6c6d6-e6f6-4666-a666-666666666662",
-                "title": "Proxmox VE Hypervisor: List Containers (Sample)",
+                "title": "API Connector Proxmox: List Containers (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -1047,13 +978,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
-                "params": {
-                  "node": "pve"
-                },
+                "params": {"node": "pve"},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "list_containers",
                 "operationTitle": "List Containers",
                 "pickFromTenant": false,
@@ -1083,11 +1012,8 @@
           "triggerLimit": null,
           "description": "Sample: Lists all cluster nodes and their status (Get Nodes). Verifies that the Proxmox cluster is reachable.",
           "name": "Get Nodes (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -1103,7 +1029,7 @@
               "status": null,
               "arguments": {
                 "route": "b7b7c7d7-e7f7-4777-a777-777777777772",
-                "title": "Proxmox VE Hypervisor: Get Nodes (Sample)",
+                "title": "API Connector Proxmox: Get Nodes (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -1122,11 +1048,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
                 "params": {},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "get_nodes",
                 "operationTitle": "Get Nodes",
                 "pickFromTenant": false,
@@ -1156,11 +1082,8 @@
           "triggerLimit": null,
           "description": "Sample: Queries the status of an asynchronous task (Get Task Status). Use the UPID from the clone/create response.",
           "name": "Get Task Status (Sample)",
-          "tag": "#Proxmox VE Hypervisor",
-          "recordTags": [
-            "Proxmox VE Hypervisor",
-            "Proxmox"
-          ],
+          "tag": "#API Connector Proxmox",
+          "recordTags": ["API Connector Proxmox", "Proxmox"],
           "isActive": true,
           "debug": false,
           "singleRecordExecution": false,
@@ -1176,7 +1099,7 @@
               "status": null,
               "arguments": {
                 "route": "b8b8c8d8-e8f8-4888-a888-888888888882",
-                "title": "Proxmox VE Hypervisor: Get Task Status (Sample)",
+                "title": "API Connector Proxmox: Get Task Status (Sample)",
                 "resources": [],
                 "inputVariables": [],
                 "step_variables": {},
@@ -1195,14 +1118,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Proxmox",
+                "name": "API Connector Proxmox",
                 "config": "''",
-                "params": {
-                  "node": "pve",
-                  "upid": "UPID:pve:00001234:5678:90ABCDEF:qmclone:2000:root@pam:"
-                },
+                "params": {"node": "pve", "upid": "UPID:pve:00001234:5678:90ABCDEF:qmclone:2000:root@pam:"},
                 "version": "1.0.0",
-                "connector": "proxmox",
+                "connector": "proxmox-api",
                 "operation": "get_task_status",
                 "operationTitle": "Get Task Status",
                 "pickFromTenant": false,
