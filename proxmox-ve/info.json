@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "label": "Proxmox VE Hypervisor",
   "description": "Proxmox VE connector, Enables VM and container provisioning, configuration and deletion via the Proxmox REST API using token-based authentication.",
-  "publisher": "Fortinet SE",
+  "publisher": "Fortinet",
   "contributor": "Michael Ibe",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",

@@ -2,1229 +2,2167 @@
   "type": "workflow_collections",
   "data": [
     {
-      "uuid": "b100c200-d300-e400-f500-617181920212",
+      "uuid": "fe40cafb-6df0-4044-9692-5b8626970465",
       "@type": "WorkflowCollection",
-      "name": "Sample - API Connector Proxmox - 1.0.0",
-      "description": "Sample playbooks for API Connector Proxmox: version, next VMID, list VMs/containers, nodes, task status, clone/create, config, start/stop, destroy, generic API request.",
-      "visible": true,
-      "image": null,
-      "recordTags": [
-        "API Connector Proxmox",
-        "Proxmox"
-      ],
       "workflows": [
         {
           "@type": "Workflow",
-          "uuid": "c1b1c1d1-e1f1-4111-a111-111111111111",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Retrieves the Proxmox version (Get Version). Verifies connectivity to the configured Proxmox instance.",
-          "name": "Test Proxmox Connection",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a1b1c1d1-e1f1-4111-a111-111111111111",
+          "uuid": "33a78100-3207-447c-88be-d3a8fb05c32b",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a1b1c1d1-e1f1-4111-a111-111111111111",
+              "uuid": "b43c47a3-0f6d-42e5-9c56-784d239fc142",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b1b1c1d1-e1f1-4111-a111-111111111112",
-                "title": "API Connector Proxmox: Test Proxmox Connection",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a1b1c1d1-e1f1-4111-a111-111111111113",
+              "uuid": "b261de97-e302-4019-9be1-26ef7f6c2ff7",
               "@type": "WorkflowStep",
               "name": "Get Version",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
-                "params": {},
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": [],
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "get_version",
-                "operationTitle": "Get Version",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "Get Version"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Returns the Proxmox VE version",
+          "name": "Get Version",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b43c47a3-0f6d-42e5-9c56-784d239fc142",
           "routes": [
             {
+              "uuid": "200a77c9-fd7c-4f33-9a20-ade35a0b986d",
               "@type": "WorkflowRoute",
-              "uuid": "b1b1c1d1-e1f1-4111-a111-111111111112",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> Get Version",
-              "sourceStep": "/api/3/workflow_steps/a1b1c1d1-e1f1-4111-a111-111111111111",
-              "targetStep": "/api/3/workflow_steps/a1b1c1d1-e1f1-4111-a111-111111111113"
+              "name": "Start-> Get Version",
+              "sourceStep": "/api/3/workflow_steps/b43c47a3-0f6d-42e5-9c56-784d239fc142",
+              "targetStep": "/api/3/workflow_steps/b261de97-e302-4019-9be1-26ef7f6c2ff7"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c2b2c2d2-e2f2-4222-a222-222222222221",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Gets the next available VMID (Get Next VMID) from the configured Proxmox instance.",
-          "name": "Get Next VMID",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a2b2c2d2-e2f2-4222-a222-222222222221",
+          "uuid": "a06a19f4-a547-4c70-b90c-282cecd440c2",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a2b2c2d2-e2f2-4222-a222-222222222221",
+              "uuid": "c5d7a39b-e911-43ed-81dc-5e7aafa8cd1b",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b2b2c2d2-e2f2-4222-a222-222222222222",
-                "title": "API Connector Proxmox: Get Next VMID",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a2b2c2d2-e2f2-4222-a222-222222222223",
+              "uuid": "76248ff8-c488-4168-91a7-e1a64753a3a8",
+              "@type": "WorkflowStep",
+              "name": "Get Cluster HA Status",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "vmid": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "get_cluster_ha_status",
+                "operationTitle": "Get Cluster HA Status"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Returns the HA status for the entire cluster, VMs included",
+          "name": "Get Cluster HA Status",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c5d7a39b-e911-43ed-81dc-5e7aafa8cd1b",
+          "routes": [
+            {
+              "uuid": "08175f00-0398-4f93-8e39-9b6b86050842",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Cluster HA Status",
+              "sourceStep": "/api/3/workflow_steps/c5d7a39b-e911-43ed-81dc-5e7aafa8cd1b",
+              "targetStep": "/api/3/workflow_steps/76248ff8-c488-4168-91a7-e1a64753a3a8"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "66fa7ee5-e37d-4437-b7eb-b2d7df9d8de9",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "2f228f3f-1801-4911-b798-d8172453e172",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "6c980110-50e4-4c7e-810a-0566b8f8e70c",
               "@type": "WorkflowStep",
               "name": "Get Next VMID",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
-                "params": {},
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": [],
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "get_next_vmid",
-                "operationTitle": "Get Next VMID",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "Get Next VMID"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Returns the next available VMID",
+          "name": "Get Next VMID",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/2f228f3f-1801-4911-b798-d8172453e172",
           "routes": [
             {
+              "uuid": "2dfa5fff-f8da-4252-8cc9-f15a4230a5b8",
               "@type": "WorkflowRoute",
-              "uuid": "b2b2c2d2-e2f2-4222-a222-222222222222",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> Get Next VMID",
-              "sourceStep": "/api/3/workflow_steps/a2b2c2d2-e2f2-4222-a222-222222222221",
-              "targetStep": "/api/3/workflow_steps/a2b2c2d2-e2f2-4222-a222-222222222223"
+              "name": "Start-> Get Next VMID",
+              "sourceStep": "/api/3/workflow_steps/2f228f3f-1801-4911-b798-d8172453e172",
+              "targetStep": "/api/3/workflow_steps/6c980110-50e4-4c7e-810a-0566b8f8e70c"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c3b3c3d3-e3f3-4333-a333-333333333331",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Clones a VM from a template (Clone VM). Adjust node, template VMID, new VMID and name, or pass them via variables.",
-          "name": "Clone VM (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a3b3c3d3-e3f3-4333-a333-333333333331",
+          "uuid": "78648e83-fa62-4420-944a-fba902fce1cc",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a3b3c3d3-e3f3-4333-a333-333333333331",
+              "uuid": "9b5e41d2-5eca-49d9-ab2b-48a420f589d3",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b3b3c3d3-e3f3-4333-a333-333333333332",
-                "title": "API Connector Proxmox: Clone VM (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a3b3c3d3-e3f3-4333-a333-333333333333",
+              "uuid": "5985c2b9-4802-4026-9966-5b550df6b310",
               "@type": "WorkflowStep",
               "name": "Clone VM",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve",
-                  "vmid": 9000,
-                  "newid": 100,
-                  "name": "sample-vm",
-                  "storage": "local-lvm",
-                  "full": true
+                  "node": "",
+                  "target_node": "",
+                  "vmid": "",
+                  "newid": "",
+                  "name": "",
+                  "pool": "",
+                  "storage": "",
+                  "full": true,
+                  "timeout": ""
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "clone_vm",
-                "operationTitle": "Clone VM",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "Clone VM"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Clones a VM from a template",
+          "name": "Clone VM",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/9b5e41d2-5eca-49d9-ab2b-48a420f589d3",
           "routes": [
             {
+              "uuid": "d7b58a95-cbbe-41ba-8392-e6d723e7b329",
               "@type": "WorkflowRoute",
-              "uuid": "b3b3c3d3-e3f3-4333-a333-333333333332",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> Clone VM",
-              "sourceStep": "/api/3/workflow_steps/a3b3c3d3-e3f3-4333-a333-333333333331",
-              "targetStep": "/api/3/workflow_steps/a3b3c3d3-e3f3-4333-a333-333333333333"
+              "name": "Start-> Clone VM",
+              "sourceStep": "/api/3/workflow_steps/9b5e41d2-5eca-49d9-ab2b-48a420f589d3",
+              "targetStep": "/api/3/workflow_steps/5985c2b9-4802-4026-9966-5b550df6b310"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c4b4c4d4-e4f4-4444-a444-444444444441",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Stops and deletes a VM (Stop VM, Destroy VM). Adjust VMID and node, or pass them via variables.",
-          "name": "Destroy VM (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a4b4c4d4-e4f4-4444-a444-444444444441",
+          "uuid": "073e7ecf-1340-49e3-a57b-9802ecfca57d",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a4b4c4d4-e4f4-4444-a444-444444444441",
+              "uuid": "a2995499-70cc-45e0-a762-e168901c84a4",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b4b4c4d4-e4f4-4444-a444-444444444442",
-                "title": "API Connector Proxmox: Destroy VM (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a4b4c4d4-e4f4-4444-a444-444444444443",
+              "uuid": "758e34b8-03a2-4c10-bdc6-cad72d31c5ca",
               "@type": "WorkflowStep",
-              "name": "Stop VM",
+              "name": "Migrate VM",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve",
-                  "vmid": 100
+                  "target_node": "",
+                  "current_node": "",
+                  "vmid": "",
+                  "online": "",
+                  "with_conntrack_state": ""
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
-                "operation": "stop_vm",
-                "operationTitle": "Stop VM",
-                "pickFromTenant": false,
-                "step_variables": []
+                "connector": "proxmox-ve",
+                "operation": "migrate_vm",
+                "operationTitle": "Migrate VM"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            },
-            {
-              "uuid": "a4b4c4d4-e4f4-4444-a444-444444444444",
-              "@type": "WorkflowStep",
-              "name": "Destroy VM",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
-                "params": {
-                  "node": "pve",
-                  "vmid": 100,
-                  "purge": true
-                },
-                "version": "1.0.0",
-                "connector": "proxmox-api",
-                "operation": "destroy_vm",
-                "operationTitle": "Destroy VM",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "left": "188",
-              "top": "240",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Migrate VM to a new proxmox Node",
+          "name": "Migrate VM",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/a2995499-70cc-45e0-a762-e168901c84a4",
           "routes": [
             {
+              "uuid": "502fc065-ab9a-4b8c-a1f4-0f12b0784fa2",
               "@type": "WorkflowRoute",
-              "uuid": "b4b4c4d4-e4f4-4444-a444-444444444442",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> Stop VM",
-              "sourceStep": "/api/3/workflow_steps/a4b4c4d4-e4f4-4444-a444-444444444441",
-              "targetStep": "/api/3/workflow_steps/a4b4c4d4-e4f4-4444-a444-444444444443"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "b4b4c4d4-e4f4-4444-a444-444444444445",
-              "label": null,
-              "isExecuted": false,
-              "name": "Stop VM -> Destroy VM",
-              "sourceStep": "/api/3/workflow_steps/a4b4c4d4-e4f4-4444-a444-444444444443",
-              "targetStep": "/api/3/workflow_steps/a4b4c4d4-e4f4-4444-a444-444444444444"
+              "name": "Start-> Migrate VM",
+              "sourceStep": "/api/3/workflow_steps/a2995499-70cc-45e0-a762-e168901c84a4",
+              "targetStep": "/api/3/workflow_steps/758e34b8-03a2-4c10-bdc6-cad72d31c5ca"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c5d5e5f5-a5b5-4555-a555-555555555551",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Creates an LXC container (Create Container). Adjust node, VMID, hostname, template and net0.",
-          "name": "Create Container (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a5d5e5f5-a5b5-4555-a555-555555555551",
+          "uuid": "df2c7877-e8ef-4a37-bff3-abf19da9c9a3",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a5d5e5f5-a5b5-4555-a555-555555555551",
+              "uuid": "24336277-6232-4653-a38a-99f488b8fcc6",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b5d5e5f5-a5b5-4555-a555-555555555552",
-                "title": "API Connector Proxmox: Create Container (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a5d5e5f5-a5b5-4555-a555-555555555553",
+              "uuid": "16cd5b91-97d9-4e97-bf8e-c14951f4849b",
               "@type": "WorkflowStep",
               "name": "Create Container",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve",
-                  "vmid": 200,
-                  "hostname": "sample-ct",
-                  "ostemplate": "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst",
+                  "node": "",
+                  "vmid": "",
+                  "hostname": "",
+                  "ostemplate": "",
                   "cores": 2,
                   "memory": 2048,
-                  "rootfs": "local-lvm:20",
-                  "net0": "name=eth0,bridge=vmbr0,ip=10.0.0.100/24,gw=10.0.0.1",
-                  "swap": 0,
-                  "nameserver": "1.1.1.1"
+                  "rootfs": "",
+                  "net0": "",
+                  "password": "",
+                  "swap": "",
+                  "nameserver": "",
+                  "unprivileged": true,
+                  "features": ""
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "create_container",
-                "operationTitle": "Create Container",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "Create Container"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Creates an LXC container",
+          "name": "Create Container",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/24336277-6232-4653-a38a-99f488b8fcc6",
           "routes": [
             {
+              "uuid": "d803e734-f580-4785-b094-b1595aaf4983",
               "@type": "WorkflowRoute",
-              "uuid": "b5d5e5f5-a5b5-4555-a555-555555555552",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> Create Container",
-              "sourceStep": "/api/3/workflow_steps/a5d5e5f5-a5b5-4555-a555-555555555551",
-              "targetStep": "/api/3/workflow_steps/a5d5e5f5-a5b5-4555-a555-555555555553"
+              "name": "Start-> Create Container",
+              "sourceStep": "/api/3/workflow_steps/24336277-6232-4653-a38a-99f488b8fcc6",
+              "targetStep": "/api/3/workflow_steps/16cd5b91-97d9-4e97-bf8e-c14951f4849b"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c6d6e6f6-a6b6-4666-a666-666666666661",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Configures a VM (Configure VM). Adjust body_params such as ipconfig0 and nameserver.",
-          "name": "Configure VM (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a6d6e6f6-a6b6-4666-a666-666666666661",
+          "uuid": "72652ba9-ba1f-4fc2-a504-09a2c343be42",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a6d6e6f6-a6b6-4666-a666-666666666661",
+              "uuid": "497b0f37-2b7f-403e-8d6b-e67ce07fbc38",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b6d6e6f6-a6b6-4666-a666-666666666662",
-                "title": "API Connector Proxmox: Configure VM (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a6d6e6f6-a6b6-4666-a666-666666666663",
+              "uuid": "7d395afd-83f5-4297-b667-7f390a127797",
+              "@type": "WorkflowStep",
+              "name": "Configure Container",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "node": "",
+                  "vmid": "",
+                  "body_params": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "config_container",
+                "operationTitle": "Configure Container"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Updates LXC container config (e.g. features=nesting=1, unprivileged). Use after create if create API ignored these.",
+          "name": "Configure Container",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/497b0f37-2b7f-403e-8d6b-e67ce07fbc38",
+          "routes": [
+            {
+              "uuid": "2a03f30e-11d4-451f-bec7-fa73321e9cf3",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Configure Container",
+              "sourceStep": "/api/3/workflow_steps/497b0f37-2b7f-403e-8d6b-e67ce07fbc38",
+              "targetStep": "/api/3/workflow_steps/7d395afd-83f5-4297-b667-7f390a127797"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "d86715e2-6c8d-42fe-9e3c-09ab1abc69d2",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "85ecb6f0-627a-4e18-9c8a-a3d73f98853c",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "31e99d75-09ca-4eed-abdb-6cfb7ba746c2",
               "@type": "WorkflowStep",
               "name": "Configure VM",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve",
-                  "vmid": 100,
-                  "body_params": {
-                    "ipconfig0": "ip=10.0.0.10/24,gw=10.0.0.1",
-                    "nameserver": "1.1.1.1"
-                  }
+                  "node": "",
+                  "vmid": "",
+                  "body_params": ""
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "config_vm",
-                "operationTitle": "Configure VM",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "Configure VM"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Configures a VM (for example cloud-init, networking)",
+          "name": "Configure VM",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/85ecb6f0-627a-4e18-9c8a-a3d73f98853c",
           "routes": [
             {
+              "uuid": "ae6d87ec-d699-4542-ba0a-5ba5325bb9b2",
               "@type": "WorkflowRoute",
-              "uuid": "b6d6e6f6-a6b6-4666-a666-666666666662",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> Configure VM",
-              "sourceStep": "/api/3/workflow_steps/a6d6e6f6-a6b6-4666-a666-666666666661",
-              "targetStep": "/api/3/workflow_steps/a6d6e6f6-a6b6-4666-a666-666666666663"
+              "name": "Start-> Configure VM",
+              "sourceStep": "/api/3/workflow_steps/85ecb6f0-627a-4e18-9c8a-a3d73f98853c",
+              "targetStep": "/api/3/workflow_steps/31e99d75-09ca-4eed-abdb-6cfb7ba746c2"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c7d7e7f7-a7b7-4777-a777-777777777771",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Starts a VM (Start VM). Adjust node and VMID.",
-          "name": "Start VM (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a7d7e7f7-a7b7-4777-a777-777777777771",
+          "uuid": "2d099d7d-5901-464a-aa81-6e9b7528cea0",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a7d7e7f7-a7b7-4777-a777-777777777771",
+              "uuid": "429736a7-f608-48fb-897f-51578157b412",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b7d7e7f7-a7b7-4777-a777-777777777772",
-                "title": "API Connector Proxmox: Start VM (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a7d7e7f7-a7b7-4777-a777-777777777773",
+              "uuid": "c6174c93-ab6e-4cb7-aaed-e44a8533d35a",
+              "@type": "WorkflowStep",
+              "name": "Resize VM Disk",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "node": "",
+                  "vmid": "",
+                  "disk": "scsi0",
+                  "target_gb": "",
+                  "assume_current_gb": "",
+                  "size": "",
+                  "timeout": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "resize_vm_disk",
+                "operationTitle": "Resize VM Disk"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Resizes a QEMU disk (qm resize). Use target_gb to grow to the requested size, or size for explicit +10G / 32G.",
+          "name": "Resize VM Disk",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/429736a7-f608-48fb-897f-51578157b412",
+          "routes": [
+            {
+              "uuid": "18b40628-71b3-45a8-bcfb-df9fe64560cb",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Resize VM Disk",
+              "sourceStep": "/api/3/workflow_steps/429736a7-f608-48fb-897f-51578157b412",
+              "targetStep": "/api/3/workflow_steps/c6174c93-ab6e-4cb7-aaed-e44a8533d35a"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "4dc3bcd5-a690-4169-b1be-d573518af96b",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "b7b811ce-d5d4-4c1b-a0d7-314eead06592",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "4827036d-674a-40d1-8fea-2446742c6b17",
+              "@type": "WorkflowStep",
+              "name": "Update VM Cloud-Init",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "node": "",
+                  "vmid": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "update_vm_cloudinit",
+                "operationTitle": "Update VM Cloud-Init"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Regenerates the cloud-init drive after config changes (qm cloudinit update)",
+          "name": "Update VM Cloud-Init",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b7b811ce-d5d4-4c1b-a0d7-314eead06592",
+          "routes": [
+            {
+              "uuid": "a3e04f73-dda7-444b-bd3f-ab7672de5c94",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update VM Cloud-Init",
+              "sourceStep": "/api/3/workflow_steps/b7b811ce-d5d4-4c1b-a0d7-314eead06592",
+              "targetStep": "/api/3/workflow_steps/4827036d-674a-40d1-8fea-2446742c6b17"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "48cb049c-adb1-4e89-a298-e090916b7925",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "9f67bd14-339e-43e1-9d42-5993dd3406ba",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "3039890d-6dec-4f2e-94cb-7770b77f26cb",
               "@type": "WorkflowStep",
               "name": "Start VM",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve",
-                  "vmid": 100
+                  "node": "",
+                  "vmid": ""
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "start_vm",
-                "operationTitle": "Start VM",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "Start VM"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Starts a VM",
+          "name": "Start VM",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/9f67bd14-339e-43e1-9d42-5993dd3406ba",
           "routes": [
             {
+              "uuid": "c8cd0803-e60a-4372-92a0-8002b7648c7d",
               "@type": "WorkflowRoute",
-              "uuid": "b7d7e7f7-a7b7-4777-a777-777777777772",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> Start VM",
-              "sourceStep": "/api/3/workflow_steps/a7d7e7f7-a7b7-4777-a777-777777777771",
-              "targetStep": "/api/3/workflow_steps/a7d7e7f7-a7b7-4777-a777-777777777773"
+              "name": "Start-> Start VM",
+              "sourceStep": "/api/3/workflow_steps/9f67bd14-339e-43e1-9d42-5993dd3406ba",
+              "targetStep": "/api/3/workflow_steps/3039890d-6dec-4f2e-94cb-7770b77f26cb"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c8d8e8f8-a8b8-4888-a888-888888888881",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Starts an LXC container (Start Container). Adjust node and VMID.",
-          "name": "Start Container (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a8d8e8f8-a8b8-4888-a888-888888888881",
+          "uuid": "555239fb-060e-4f18-aa74-df4bdfb4aec2",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a8d8e8f8-a8b8-4888-a888-888888888881",
+              "uuid": "6add85bd-4aad-4fa1-896d-55157af39acb",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b8d8e8f8-a8b8-4888-a888-888888888882",
-                "title": "API Connector Proxmox: Start Container (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a8d8e8f8-a8b8-4888-a888-888888888883",
+              "uuid": "faec5874-1f59-4a10-aeb6-65c0d62ffd74",
+              "@type": "WorkflowStep",
+              "name": "Stop VM",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "node": "",
+                  "vmid": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "stop_vm",
+                "operationTitle": "Stop VM"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Stops a VM",
+          "name": "Stop VM",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/6add85bd-4aad-4fa1-896d-55157af39acb",
+          "routes": [
+            {
+              "uuid": "7b849789-ccd9-4f14-ba9a-a8be3b8110e6",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Stop VM",
+              "sourceStep": "/api/3/workflow_steps/6add85bd-4aad-4fa1-896d-55157af39acb",
+              "targetStep": "/api/3/workflow_steps/faec5874-1f59-4a10-aeb6-65c0d62ffd74"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "ba9bd254-0e09-4837-be78-179a0b074b83",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "b909a73b-73e7-41e2-a278-6612513eb746",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "b80ca1d4-b24e-4054-8dca-69087d9d53e0",
               "@type": "WorkflowStep",
               "name": "Start Container",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve",
-                  "vmid": 200
+                  "node": "",
+                  "vmid": ""
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "start_container",
-                "operationTitle": "Start Container",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "Start Container"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Starts an LXC container",
+          "name": "Start Container",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b909a73b-73e7-41e2-a278-6612513eb746",
           "routes": [
             {
+              "uuid": "3eca3463-3d4a-4da5-9a38-31c700fa90cf",
               "@type": "WorkflowRoute",
-              "uuid": "b8d8e8f8-a8b8-4888-a888-888888888882",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> Start Container",
-              "sourceStep": "/api/3/workflow_steps/a8d8e8f8-a8b8-4888-a888-888888888881",
-              "targetStep": "/api/3/workflow_steps/a8d8e8f8-a8b8-4888-a888-888888888883"
+              "name": "Start-> Start Container",
+              "sourceStep": "/api/3/workflow_steps/b909a73b-73e7-41e2-a278-6612513eb746",
+              "targetStep": "/api/3/workflow_steps/b80ca1d4-b24e-4054-8dca-69087d9d53e0"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c9d9e9f9-a9b9-4999-a999-999999999991",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Stops an LXC container (Stop Container). Adjust node and VMID.",
-          "name": "Stop Container (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a9d9e9f9-a9b9-4999-a999-999999999991",
+          "uuid": "bf0933f9-b159-44e6-94f9-79d940e74f4e",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a9d9e9f9-a9b9-4999-a999-999999999991",
+              "uuid": "ad9a1bff-137f-4103-a169-ce698c8502a8",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b9d9e9f9-a9b9-4999-a999-999999999992",
-                "title": "API Connector Proxmox: Stop Container (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a9d9e9f9-a9b9-4999-a999-999999999993",
+              "uuid": "9217221e-93e7-4099-9e2d-ba504bfc984a",
               "@type": "WorkflowStep",
               "name": "Stop Container",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve",
-                  "vmid": 200
+                  "node": "",
+                  "vmid": ""
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "stop_container",
-                "operationTitle": "Stop Container",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "Stop Container"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Stops an LXC container",
+          "name": "Stop Container",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ad9a1bff-137f-4103-a169-ce698c8502a8",
           "routes": [
             {
+              "uuid": "f09bbc81-b9b1-4e8e-8563-09322987f9b4",
               "@type": "WorkflowRoute",
-              "uuid": "b9d9e9f9-a9b9-4999-a999-999999999992",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> Stop Container",
-              "sourceStep": "/api/3/workflow_steps/a9d9e9f9-a9b9-4999-a999-999999999991",
-              "targetStep": "/api/3/workflow_steps/a9d9e9f9-a9b9-4999-a999-999999999993"
+              "name": "Start-> Stop Container",
+              "sourceStep": "/api/3/workflow_steps/ad9a1bff-137f-4103-a169-ce698c8502a8",
+              "targetStep": "/api/3/workflow_steps/9217221e-93e7-4099-9e2d-ba504bfc984a"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c0d0e0f0-a0b0-4000-a000-000000000001",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Stops and deletes an LXC container (Stop Container, Destroy Container). Adjust VMID and node.",
-          "name": "Destroy Container (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a0d0e0f0-a0b0-4000-a000-000000000001",
+          "uuid": "b9c861f3-71a2-47b7-969d-0d66051a313d",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a0d0e0f0-a0b0-4000-a000-000000000001",
+              "uuid": "e6fa23fc-a5f6-4a6d-afbf-dcc0a575e41c",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b0d0e0f0-a0b0-4000-a000-000000000002",
-                "title": "API Connector Proxmox: Destroy Container (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a0d0e0f0-a0b0-4000-a000-000000000003",
+              "uuid": "383ff6d2-b2bd-4c6f-bfd4-75dde3c09018",
               "@type": "WorkflowStep",
-              "name": "Stop Container",
+              "name": "Destroy VM",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve",
-                  "vmid": 200
+                  "node": "",
+                  "vmid": "",
+                  "purge": true,
+                  "destroy-unreferenced-disks": true
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
-                "operation": "stop_container",
-                "operationTitle": "Stop Container",
-                "pickFromTenant": false,
-                "step_variables": []
+                "connector": "proxmox-ve",
+                "operation": "destroy_vm",
+                "operationTitle": "Destroy VM"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Deletes a VM (optional purge=1)",
+          "name": "Destroy VM",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/e6fa23fc-a5f6-4a6d-afbf-dcc0a575e41c",
+          "routes": [
+            {
+              "uuid": "59221a98-6ad2-43c2-845b-9724951006b3",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Destroy VM",
+              "sourceStep": "/api/3/workflow_steps/e6fa23fc-a5f6-4a6d-afbf-dcc0a575e41c",
+              "targetStep": "/api/3/workflow_steps/383ff6d2-b2bd-4c6f-bfd4-75dde3c09018"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "431ff692-acb4-4aa6-b774-7600cd7817c3",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "7b0fb695-fe3d-4296-aa4a-1e5b27658700",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a0d0e0f0-a0b0-4000-a000-000000000004",
+              "uuid": "70e91c79-0406-4b0a-b761-33ecdb45551b",
               "@type": "WorkflowStep",
               "name": "Destroy Container",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve",
-                  "vmid": 200
+                  "node": "",
+                  "vmid": "",
+                  "force": ""
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "destroy_container",
-                "operationTitle": "Destroy Container",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "left": "188",
-              "top": "240",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "b0d0e0f0-a0b0-4000-a000-000000000002",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start -> Stop Container",
-              "sourceStep": "/api/3/workflow_steps/a0d0e0f0-a0b0-4000-a000-000000000001",
-              "targetStep": "/api/3/workflow_steps/a0d0e0f0-a0b0-4000-a000-000000000003"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "b0d0e0f0-a0b0-4000-a000-000000000005",
-              "label": null,
-              "isExecuted": false,
-              "name": "Stop Container -> Destroy Container",
-              "sourceStep": "/api/3/workflow_steps/a0d0e0f0-a0b0-4000-a000-000000000003",
-              "targetStep": "/api/3/workflow_steps/a0d0e0f0-a0b0-4000-a000-000000000004"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "c1d1e1f1-a1b1-4111-a111-111111111191",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Generic API request (API Request). Adjust method and url_path, for example GET nodes/pve/status.",
-          "name": "API Request Generic (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a1d1e1f1-a1b1-4111-a111-111111111191",
-          "steps": [
-            {
-              "uuid": "a1d1e1f1-a1b1-4111-a111-111111111191",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "route": "b1d1e1f1-a1b1-4111-a111-111111111192",
-                "title": "API Connector Proxmox: API Request Generic (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
-            },
-            {
-              "uuid": "a1d1e1f1-a1b1-4111-a111-111111111193",
-              "@type": "WorkflowStep",
-              "name": "API Request",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
-                "params": {
-                  "method": "GET",
-                  "url_path": "nodes/pve/status"
-                },
-                "version": "1.0.0",
-                "connector": "proxmox-api",
-                "operation": "api_request",
-                "operationTitle": "API Request (Generic)",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "Destroy Container"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Deletes an LXC container",
+          "name": "Destroy Container",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/7b0fb695-fe3d-4296-aa4a-1e5b27658700",
           "routes": [
             {
+              "uuid": "2bd7d90f-b234-434c-b5c2-7871480b4d9c",
               "@type": "WorkflowRoute",
-              "uuid": "b1d1e1f1-a1b1-4111-a111-111111111192",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> API Request",
-              "sourceStep": "/api/3/workflow_steps/a1d1e1f1-a1b1-4111-a111-111111111191",
-              "targetStep": "/api/3/workflow_steps/a1d1e1f1-a1b1-4111-a111-111111111193"
+              "name": "Start-> Destroy Container",
+              "sourceStep": "/api/3/workflow_steps/7b0fb695-fe3d-4296-aa4a-1e5b27658700",
+              "targetStep": "/api/3/workflow_steps/70e91c79-0406-4b0a-b761-33ecdb45551b"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c5b5c5d5-e5f5-4555-a555-555555555551",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Lists all VMs on the node (List VMs). Adjust node (for example pve).",
-          "name": "List VMs (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a5b5c5d5-e5f5-4555-a555-555555555551",
+          "uuid": "bd064f47-85a5-42ad-8e89-40d2fadf8f92",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a5b5c5d5-e5f5-4555-a555-555555555551",
+              "uuid": "2be32a1a-a675-4573-ae05-220296060d65",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b5b5c5d5-e5f5-4555-a555-555555555552",
-                "title": "API Connector Proxmox: List VMs (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a5b5c5d5-e5f5-4555-a555-555555555553",
+              "uuid": "4a5c757a-41d4-41a5-8631-7a4113c9d6db",
               "@type": "WorkflowStep",
               "name": "List VMs",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve"
+                  "node": "",
+                  "include_config": ""
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "list_vms",
-                "operationTitle": "List VMs",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "List VMs"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Lists all VMs on the node (GET /nodes/{node}/qemu). Optionally include config (disks, net) per VM.",
+          "name": "List VMs",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/2be32a1a-a675-4573-ae05-220296060d65",
           "routes": [
             {
+              "uuid": "fa58f86d-a552-4b2d-94fe-162cb1673332",
               "@type": "WorkflowRoute",
-              "uuid": "b5b5c5d5-e5f5-4555-a555-555555555552",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> List VMs",
-              "sourceStep": "/api/3/workflow_steps/a5b5c5d5-e5f5-4555-a555-555555555551",
-              "targetStep": "/api/3/workflow_steps/a5b5c5d5-e5f5-4555-a555-555555555553"
+              "name": "Start-> List VMs",
+              "sourceStep": "/api/3/workflow_steps/2be32a1a-a675-4573-ae05-220296060d65",
+              "targetStep": "/api/3/workflow_steps/4a5c757a-41d4-41a5-8631-7a4113c9d6db"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c6b6c6d6-e6f6-4666-a666-666666666661",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Lists all LXC containers on the node (List Containers). Adjust node (for example pve).",
-          "name": "List Containers (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a6b6c6d6-e6f6-4666-a666-666666666661",
+          "uuid": "288a6e02-c933-4611-bd35-3affc5ffc89b",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a6b6c6d6-e6f6-4666-a666-666666666661",
+              "uuid": "0167f0bd-835e-4f1d-9571-347e13b1f438",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b6b6c6d6-e6f6-4666-a666-666666666662",
-                "title": "API Connector Proxmox: List Containers (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a6b6c6d6-e6f6-4666-a666-666666666663",
+              "uuid": "1dccf25c-e275-4fd5-aa31-7ce440ce1c89",
               "@type": "WorkflowStep",
               "name": "List Containers",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve"
+                  "node": "",
+                  "include_config": ""
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "list_containers",
-                "operationTitle": "List Containers",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "List Containers"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Lists all LXC containers on the node (GET /nodes/{node}/lxc). Optionally include config (rootfs, mp, net) per container.",
+          "name": "List Containers",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/0167f0bd-835e-4f1d-9571-347e13b1f438",
           "routes": [
             {
+              "uuid": "42652063-67d6-44ae-99de-8d23b89bdd67",
               "@type": "WorkflowRoute",
-              "uuid": "b6b6c6d6-e6f6-4666-a666-666666666662",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> List Containers",
-              "sourceStep": "/api/3/workflow_steps/a6b6c6d6-e6f6-4666-a666-666666666661",
-              "targetStep": "/api/3/workflow_steps/a6b6c6d6-e6f6-4666-a666-666666666663"
+              "name": "Start-> List Containers",
+              "sourceStep": "/api/3/workflow_steps/0167f0bd-835e-4f1d-9571-347e13b1f438",
+              "targetStep": "/api/3/workflow_steps/1dccf25c-e275-4fd5-aa31-7ce440ce1c89"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c7b7c7d7-e7f7-4777-a777-777777777771",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Lists all cluster nodes and their status (Get Nodes). Verifies that the Proxmox cluster is reachable.",
-          "name": "Get Nodes (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a7b7c7d7-e7f7-4777-a777-777777777771",
+          "uuid": "b3f77851-6a5d-462f-9716-152f7e306e57",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a7b7c7d7-e7f7-4777-a777-777777777771",
+              "uuid": "200ba1ba-e41c-4336-9764-8f3be81cc30e",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b7b7c7d7-e7f7-4777-a777-777777777772",
-                "title": "API Connector Proxmox: Get Nodes (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a7b7c7d7-e7f7-4777-a777-777777777773",
+              "uuid": "02fd2905-23be-438d-aa7d-39443fc780ca",
               "@type": "WorkflowStep",
-              "name": "Get Nodes",
+              "name": "Get VM Config",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
-                "params": {},
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "node": "",
+                  "vmid": ""
+                },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
-                "operation": "get_nodes",
-                "operationTitle": "Get Nodes",
-                "pickFromTenant": false,
-                "step_variables": []
+                "connector": "proxmox-ve",
+                "operation": "get_vm_config",
+                "operationTitle": "Get VM Config"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "VM config (disks, network interfaces). For use in inventory sync.",
+          "name": "Get VM Config",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/200ba1ba-e41c-4336-9764-8f3be81cc30e",
           "routes": [
             {
+              "uuid": "2640df82-b460-4e55-a41c-6ac1837b7ff7",
               "@type": "WorkflowRoute",
-              "uuid": "b7b7c7d7-e7f7-4777-a777-777777777772",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> Get Nodes",
-              "sourceStep": "/api/3/workflow_steps/a7b7c7d7-e7f7-4777-a777-777777777771",
-              "targetStep": "/api/3/workflow_steps/a7b7c7d7-e7f7-4777-a777-777777777773"
+              "name": "Start-> Get VM Config",
+              "sourceStep": "/api/3/workflow_steps/200ba1ba-e41c-4336-9764-8f3be81cc30e",
+              "targetStep": "/api/3/workflow_steps/02fd2905-23be-438d-aa7d-39443fc780ca"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "c8b8c8d8-e8f8-4888-a888-888888888881",
-          "collection": "/api/3/workflow_collections/b100c200-d300-e400-f500-617181920212",
-          "triggerLimit": null,
-          "description": "Sample: Queries the status of an asynchronous task (Get Task Status). Use the UPID from the clone/create response.",
-          "name": "Get Task Status (Sample)",
-          "tag": "#API Connector Proxmox",
-          "recordTags": [
-            "API Connector Proxmox",
-            "Proxmox"
-          ],
-          "isActive": true,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/a8b8c8d8-e8f8-4888-a888-888888888881",
+          "uuid": "51d4d8c5-ece6-4845-a20e-1f55a9061d7b",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
           "steps": [
             {
-              "uuid": "a8b8c8d8-e8f8-4888-a888-888888888881",
+              "uuid": "1f1f162b-41c5-41b0-82d4-2f9cd88cb41a",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b8b8c8d8-e8f8-4888-a888-888888888882",
-                "title": "API Connector Proxmox: Get Task Status (Sample)",
-                "resources": [],
-                "inputVariables": [],
-                "step_variables": {},
-                "singleRecordExecution": true,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "a8b8c8d8-e8f8-4888-a888-888888888883",
+              "uuid": "793b0611-09ab-415c-bce9-ab6c48c41ca9",
+              "@type": "WorkflowStep",
+              "name": "Get Container Config",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "node": "",
+                  "vmid": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "get_container_config",
+                "operationTitle": "Get Container Config"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Container config (rootfs, mp, network interfaces). For use in inventory sync.",
+          "name": "Get Container Config",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/1f1f162b-41c5-41b0-82d4-2f9cd88cb41a",
+          "routes": [
+            {
+              "uuid": "e551a644-6340-4756-b986-65dca2048202",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Container Config",
+              "sourceStep": "/api/3/workflow_steps/1f1f162b-41c5-41b0-82d4-2f9cd88cb41a",
+              "targetStep": "/api/3/workflow_steps/793b0611-09ab-415c-bce9-ab6c48c41ca9"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "37605b75-01ab-420a-93a5-23e5899545d9",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "e1448f43-d149-40a3-9e4b-d0014f13d315",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "1e69b51d-e57e-4b50-9363-8995e6bac766",
               "@type": "WorkflowStep",
               "name": "Get Task Status",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "API Connector Proxmox",
-                "config": "''",
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
                 "params": {
-                  "node": "pve",
-                  "upid": "UPID:pve:00001234:5678:90ABCDEF:qmclone:2000:root@pam:"
+                  "node": "",
+                  "upid": ""
                 },
                 "version": "1.0.0",
-                "connector": "proxmox-api",
+                "connector": "proxmox-ve",
                 "operation": "get_task_status",
-                "operationTitle": "Get Task Status",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operationTitle": "Get Task Status"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Status of an asynchronous task (for example clone job, UPID from response)",
+          "name": "Get Task Status",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/e1448f43-d149-40a3-9e4b-d0014f13d315",
           "routes": [
             {
+              "uuid": "d04f470f-70ae-45de-b7ec-5365e3060985",
               "@type": "WorkflowRoute",
-              "uuid": "b8b8c8d8-e8f8-4888-a888-888888888882",
               "label": null,
               "isExecuted": false,
-              "name": "Start -> Get Task Status",
-              "sourceStep": "/api/3/workflow_steps/a8b8c8d8-e8f8-4888-a888-888888888881",
-              "targetStep": "/api/3/workflow_steps/a8b8c8d8-e8f8-4888-a888-888888888883"
+              "name": "Start-> Get Task Status",
+              "sourceStep": "/api/3/workflow_steps/e1448f43-d149-40a3-9e4b-d0014f13d315",
+              "targetStep": "/api/3/workflow_steps/1e69b51d-e57e-4b50-9363-8995e6bac766"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "970f4eaf-8e35-41a8-b1f8-2d7d124a5975",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "03292e75-672e-4f19-9b78-3419a36003d7",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "2b2055cc-dabe-4f6f-99fd-0d5fba65c67c",
+              "@type": "WorkflowStep",
+              "name": "Get Nodes",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "get_nodes",
+                "operationTitle": "Get Nodes"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "List of all cluster nodes and their status (online/offline)",
+          "name": "Get Nodes",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/03292e75-672e-4f19-9b78-3419a36003d7",
+          "routes": [
+            {
+              "uuid": "08af106a-0d8d-456b-a954-a880b881d3bf",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Nodes",
+              "sourceStep": "/api/3/workflow_steps/03292e75-672e-4f19-9b78-3419a36003d7",
+              "targetStep": "/api/3/workflow_steps/2b2055cc-dabe-4f6f-99fd-0d5fba65c67c"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "a0406f35-8e0c-42c8-82a6-3ad0958c6989",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "fa4ff5a0-37b7-4a44-8840-805c2fc50631",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "e54dde8b-f273-462d-a870-ee8fc767dc73",
+              "@type": "WorkflowStep",
+              "name": "Get Cluster Resources",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "type": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "get_cluster_resources",
+                "operationTitle": "Get Cluster Resources"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Cluster resources (optionally filter by type=node|vm|storage)",
+          "name": "Get Cluster Resources",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/fa4ff5a0-37b7-4a44-8840-805c2fc50631",
+          "routes": [
+            {
+              "uuid": "4c709f36-9c69-4550-bb0b-076d61612e60",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Cluster Resources",
+              "sourceStep": "/api/3/workflow_steps/fa4ff5a0-37b7-4a44-8840-805c2fc50631",
+              "targetStep": "/api/3/workflow_steps/e54dde8b-f273-462d-a870-ee8fc767dc73"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "c89cb679-8b1d-42a3-b168-49bbe7548f5f",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "c83d5819-e31c-4ca0-a82f-c8dbee39479e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "f9d220db-67d5-4921-8f65-1c9d735781ff",
+              "@type": "WorkflowStep",
+              "name": "Get VM Status",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "node": "",
+                  "vmid": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "get_vm_status",
+                "operationTitle": "Get VM Status"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Detailed status of a VM (running/stopped). Requires VM.Audit on the VM",
+          "name": "Get VM Status",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c83d5819-e31c-4ca0-a82f-c8dbee39479e",
+          "routes": [
+            {
+              "uuid": "32227583-28d5-4114-8b7c-1aaf8326b612",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get VM Status",
+              "sourceStep": "/api/3/workflow_steps/c83d5819-e31c-4ca0-a82f-c8dbee39479e",
+              "targetStep": "/api/3/workflow_steps/f9d220db-67d5-4921-8f65-1c9d735781ff"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "d80cf621-4244-48a0-9ec1-a7255d04c6f9",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "b3ffd822-1052-44aa-857b-40c8a65303e5",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "6f53d248-df33-42a4-8ee1-77ad35b4a9d1",
+              "@type": "WorkflowStep",
+              "name": "Get Container Status",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "node": "",
+                  "vmid": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "get_container_status",
+                "operationTitle": "Get Container Status"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Detailed status of a container (running/stopped). Requires VM.Audit",
+          "name": "Get Container Status",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b3ffd822-1052-44aa-857b-40c8a65303e5",
+          "routes": [
+            {
+              "uuid": "34edef42-b698-4566-9df9-53139c95272e",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Container Status",
+              "sourceStep": "/api/3/workflow_steps/b3ffd822-1052-44aa-857b-40c8a65303e5",
+              "targetStep": "/api/3/workflow_steps/6f53d248-df33-42a4-8ee1-77ad35b4a9d1"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "79686796-3fe2-4249-9034-2f85a5609dad",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "5b64e608-cc22-4fb7-a7fc-dafc923e6508",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "5c4cd724-7a4b-471b-9c79-63d374319c18",
+              "@type": "WorkflowStep",
+              "name": "Get Node Status",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "node": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "get_node_status",
+                "operationTitle": "Get Node Status"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Node resources (memory, CPU). Requires Sys.Audit",
+          "name": "Get Node Status",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/5b64e608-cc22-4fb7-a7fc-dafc923e6508",
+          "routes": [
+            {
+              "uuid": "18db94a9-93a7-430c-bb25-615c35075cdc",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Node Status",
+              "sourceStep": "/api/3/workflow_steps/5b64e608-cc22-4fb7-a7fc-dafc923e6508",
+              "targetStep": "/api/3/workflow_steps/5c4cd724-7a4b-471b-9c79-63d374319c18"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "c7c89948-1788-4f41-8a0b-e7a954f9eac2",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "96f3a960-9721-4a6d-b716-c412c17de224",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "c6527330-b09c-400b-bfc6-520fab284fd1",
+              "@type": "WorkflowStep",
+              "name": "Get Storage Status",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "node": "",
+                  "storage": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "get_storage_status",
+                "operationTitle": "Get Storage Status"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Storage, templates and VM status (disk total/free/used). Requires Datastore.Audit",
+          "name": "Get Storage Status",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/96f3a960-9721-4a6d-b716-c412c17de224",
+          "routes": [
+            {
+              "uuid": "7e692b79-0f39-4e88-b9df-1f7ec2675717",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Storage Status",
+              "sourceStep": "/api/3/workflow_steps/96f3a960-9721-4a6d-b716-c412c17de224",
+              "targetStep": "/api/3/workflow_steps/c6527330-b09c-400b-bfc6-520fab284fd1"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "774bdebf-7d7d-4d1d-8b5e-5c1ded46e9cb",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "780eda2c-bfe5-4cb5-b579-0e6c543f1fa5",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "4ad5121f-128b-46a8-acaf-ad2a2fcb6844",
+              "@type": "WorkflowStep",
+              "name": "Get Storage Content",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "node": "",
+                  "storage": "",
+                  "content": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "get_storage_content",
+                "operationTitle": "Get Storage Content"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Storage content (templates, images). Requires Datastore.Audit",
+          "name": "Get Storage Content",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/780eda2c-bfe5-4cb5-b579-0e6c543f1fa5",
+          "routes": [
+            {
+              "uuid": "80dff21a-8179-496f-b23b-c5c0e5d6cd45",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Storage Content",
+              "sourceStep": "/api/3/workflow_steps/780eda2c-bfe5-4cb5-b579-0e6c543f1fa5",
+              "targetStep": "/api/3/workflow_steps/4ad5121f-128b-46a8-acaf-ad2a2fcb6844"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "186df9f8-8a90-4ac6-8e7d-7c3d19fd0509",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "5d1a8767-fa0a-479e-8e5b-6161de77a22e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "bde96024-f75a-417a-a7b5-8a2781ae6514",
+              "@type": "WorkflowStep",
+              "name": "Disable VM HA",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "vmid": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "disable_vm_ha",
+                "operationTitle": "Disable VM HA"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Remove a specific VM from HA setup, it becomes standalone",
+          "name": "Disable VM HA",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/5d1a8767-fa0a-479e-8e5b-6161de77a22e",
+          "routes": [
+            {
+              "uuid": "8092637f-8f82-4d35-a66d-689fb5e11e98",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Disable VM HA",
+              "sourceStep": "/api/3/workflow_steps/5d1a8767-fa0a-479e-8e5b-6161de77a22e",
+              "targetStep": "/api/3/workflow_steps/bde96024-f75a-417a-a7b5-8a2781ae6514"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "f2322d98-f41c-455f-ae75-fd9f523d7141",
+          "collection": "/api/3/workflow_collections/fe40cafb-6df0-4044-9692-5b8626970465",
+          "steps": [
+            {
+              "uuid": "b08c6ad1-f36d-49b5-b814-550f63e41c39",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "8f81b6cd-131a-4808-af36-0b87448ac9e6",
+              "@type": "WorkflowStep",
+              "name": "API Request (Generic)",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Proxmox VE Hypervisor",
+                "config": "",
+                "params": {
+                  "method": "",
+                  "endpoint": "",
+                  "headers": "",
+                  "body": ""
+                },
+                "version": "1.0.0",
+                "connector": "proxmox-ve",
+                "operation": "api_request",
+                "operationTitle": "API Request (Generic)"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Generic API request (GET/POST/PUT/DELETE) for arbitrary endpoints",
+          "name": "API Request (Generic)",
+          "tag": "#Proxmox VE Hypervisor",
+          "recordTags": [
+            "Proxmox",
+            "proxmox-ve"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b08c6ad1-f36d-49b5-b814-550f63e41c39",
+          "routes": [
+            {
+              "uuid": "a7a407ff-eaec-4df0-9feb-c2f43cc47907",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> API Request (Generic)",
+              "sourceStep": "/api/3/workflow_steps/b08c6ad1-f36d-49b5-b814-550f63e41c39",
+              "targetStep": "/api/3/workflow_steps/8f81b6cd-131a-4808-af36-0b87448ac9e6"
             }
           ]
         }
+      ],
+      "name": "Sample - Proxmox VE Hypervisor - 1.0.0",
+      "description": "Proxmox VE connector, Enables VM and container provisioning, configuration and deletion via the Proxmox REST API using token-based authentication.",
+      "visible": true,
+      "recordTags": [
+        "Proxmox",
+        "proxmox-ve"
       ]
     }
   ]
