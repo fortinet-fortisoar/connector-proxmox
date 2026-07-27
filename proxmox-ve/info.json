@@ -9,7 +9,7 @@
   "icon_large_name": "large.png",
   "cs_approved": false,
   "cs_compatible": true,
-  "category": "Infrastructure",
+  "category": "Compute Platform",
   "help_online": "",
   "configuration": {
     "fields": [
@@ -240,7 +240,7 @@
       "operation": "migrate_vm",
       "title": "Migrate VM",
       "description": "Migrate VM to a new proxmox Node",
-      "category": "operations",
+      "category": "investigation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -950,7 +950,7 @@
         {
           "name": "include_config",
           "title": "Include config",
-          "type": "boolean",
+          "type": "checkbox",
           "required": true,
           "visible": true,
           "editable": true,
@@ -1026,7 +1026,7 @@
         {
           "name": "vmid",
           "title": "VMID",
-          "type": "number",
+          "type": "integer",
           "required": true,
           "visible": true,
           "editable": true,
