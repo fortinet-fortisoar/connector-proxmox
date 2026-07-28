@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "label": "Proxmox VE Hypervisor",
   "description": "Proxmox VE connector, Enables VM and container provisioning, configuration and deletion via the Proxmox REST API using token-based authentication.",
-  "publisher": "Fortinet SE",
+  "publisher": "Fortinet",
   "contributor": "Michael Ibe",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "cs_approved": false,
   "cs_compatible": true,
-  "category": "Infrastructure",
+  "category": "Compute Platform",
   "help_online": "",
   "configuration": {
     "fields": [
@@ -240,7 +240,7 @@
       "operation": "migrate_vm",
       "title": "Migrate VM",
       "description": "Migrate VM to a new proxmox Node",
-      "category": "operations",
+      "category": "investigation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -950,7 +950,7 @@
         {
           "name": "include_config",
           "title": "Include config",
-          "type": "boolean",
+          "type": "checkbox",
           "required": true,
           "visible": true,
           "editable": true,
@@ -1026,7 +1026,7 @@
         {
           "name": "vmid",
           "title": "VMID",
-          "type": "number",
+          "type": "integer",
           "required": true,
           "visible": true,
           "editable": true,
