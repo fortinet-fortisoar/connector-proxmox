@@ -87,7 +87,7 @@
       "annotation": "get_version",
       "title": "Get Version",
       "description": "Returns the Proxmox VE version",
-      "category": "utilities",
+      "category": "investigation",
       "parameters": [],
       "enabled": true,
       "output_schema": {
@@ -124,7 +124,7 @@
       "annotation": "get_next_vmid",
       "title": "Get Next VMID",
       "description": "Returns the next available VMID",
-      "category": "utilities",
+      "category": "investigation",
       "enabled": true,
       "parameters": [
       ],
