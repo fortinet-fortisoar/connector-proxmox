@@ -696,7 +696,7 @@
       "annotation": "stop_vm",
       "title": "Stop VM",
       "description": "Stops a VM",
-      "category": "remediation",
+      "category": "containment",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -766,7 +766,7 @@
       "annotation": "stop_container",
       "title": "Stop Container",
       "description": "Stops an LXC container",
-      "category": "remediation",
+      "category": "containment",
       "visible": true,
       "enabled": true,
       "parameters": [
