@@ -135,8 +135,9 @@
     {
       "operation": "clone_vm",
       "title": "Clone VM",
+      "annotation": "clone_vm",
       "description": "Clones a VM from a template",
-      "category": "investigation",
+      "category": "remediation",
       "enabled": true,
       "parameters": [
         {
@@ -238,9 +239,10 @@
     },
     {
       "operation": "migrate_vm",
+      "annotation": "migrate_vm",
       "title": "Migrate VM",
       "description": "Migrate VM to a new proxmox Node",
-      "category": "investigation",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -302,9 +304,10 @@
     },
     {
       "operation": "create_container",
+      "annotation": "create_container",
       "title": "Create Container",
       "description": "Creates an LXC container",
-      "category": "investigation",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -450,9 +453,10 @@
     },
     {
       "operation": "config_container",
+      "annotation": "config_container",
       "title": "Configure Container",
       "description": "Updates LXC container config (e.g. features=nesting=1, unprivileged). Use after create if create API ignored these.",
-      "category": "investigation",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -492,9 +496,10 @@
     },
     {
       "operation": "config_vm",
+      "annotation": "config_vm",
       "title": "Configure VM",
       "description": "Configures a VM (for example cloud-init, networking)",
-      "category": "investigation",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -534,9 +539,10 @@
     },
     {
       "operation": "resize_vm_disk",
+      "annotation": "resize_vm_disk",
       "title": "Resize VM Disk",
       "description": "Resizes a QEMU disk (qm resize). Use target_gb to grow to the requested size, or size for explicit +10G / 32G.",
-      "category": "investigation",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -619,9 +625,10 @@
     },
     {
       "operation": "update_vm_cloudinit",
+      "annotation": "update_vm_cloudinit",
       "title": "Update VM Cloud-Init",
       "description": "Regenerates the cloud-init drive after config changes (qm cloudinit update)",
-      "category": "investigation",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -651,9 +658,10 @@
     },
     {
       "operation": "start_vm",
+      "annotation": "start_vm",
       "title": "Start VM",
       "description": "Starts a VM",
-      "category": "investigation",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -685,9 +693,10 @@
     },
     {
       "operation": "stop_vm",
+      "annotation": "stop_vm",
       "title": "Stop VM",
       "description": "Stops a VM",
-      "category": "investigation",
+      "category": "containment",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -719,9 +728,10 @@
     },
     {
       "operation": "start_container",
+      "annotation": "start_container",
       "title": "Start Container",
       "description": "Starts an LXC container",
-      "category": "investigation",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -753,9 +763,10 @@
     },
     {
       "operation": "stop_container",
+      "annotation": "stop_container",
       "title": "Stop Container",
       "description": "Stops an LXC container",
-      "category": "investigation",
+      "category": "containment",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -787,9 +798,10 @@
     },
     {
       "operation": "destroy_vm",
+      "annotation": "destroy_vm",
       "title": "Destroy VM",
       "description": "Deletes a VM (optional purge=1)",
-      "category": "investigation",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -842,9 +854,10 @@
     },
     {
       "operation": "destroy_container",
+      "annotation": "destroy_container",
       "title": "Destroy Container",
       "description": "Deletes an LXC container",
-      "category": "investigation",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -886,6 +899,7 @@
     },
     {
       "operation": "list_vms",
+      "annotation": "list_vms",
       "title": "List VMs",
       "description": "Lists all VMs on the node (GET /nodes/{node}/qemu). Optionally include config (disks, net) per VM.",
       "category": "investigation",
@@ -931,6 +945,7 @@
     },
     {
       "operation": "list_containers",
+      "annotation": "list_containers",
       "title": "List Containers",
       "description": "Lists all LXC containers on the node (GET /nodes/{node}/lxc). Optionally include config (rootfs, mp, net) per container.",
       "category": "investigation",
@@ -975,6 +990,7 @@
     },
     {
       "operation": "get_vm_config",
+      "annotation": "get_vm_config",
       "title": "Get VM Config",
       "description": "VM config (disks, network interfaces). For use in inventory sync.",
       "category": "investigation",
@@ -1007,6 +1023,7 @@
     },
     {
       "operation": "get_container_config",
+      "annotation": "get_container_config",
       "title": "Get Container Config",
       "description": "Container config (rootfs, mp, network interfaces). For use in inventory sync.",
       "category": "investigation",
@@ -1039,6 +1056,7 @@
     },
     {
       "operation": "get_task_status",
+      "annotation": "get_task_status",
       "title": "Get Task Status",
       "description": "Status of an asynchronous task (for example clone job, UPID from response)",
       "category": "investigation",
@@ -1072,6 +1090,7 @@
     },
     {
       "operation": "get_nodes",
+      "annotation": "get_nodes",
       "title": "Get Nodes",
       "description": "List of all cluster nodes and their status (online/offline)",
       "category": "investigation",
@@ -1086,6 +1105,7 @@
     },
     {
       "operation": "get_cluster_resources",
+      "annotation": "get_cluster_resources",
       "title": "Get Cluster Resources",
       "description": "Cluster resources (optionally filter by type=node|vm|storage)",
       "category": "investigation",
@@ -1111,6 +1131,7 @@
     },
     {
       "operation": "get_vm_status",
+      "annotation": "get_vm_status",
       "title": "Get VM Status",
       "description": "Detailed status of a VM (running/stopped). Requires VM.Audit on the VM",
       "category": "investigation",
@@ -1143,6 +1164,7 @@
     },
     {
       "operation": "get_container_status",
+      "annotation": "get_container_status",
       "title": "Get Container Status",
       "description": "Detailed status of a container (running/stopped). Requires VM.Audit",
       "category": "investigation",
@@ -1175,6 +1197,7 @@
     },
     {
       "operation": "get_node_status",
+      "annotation": "get_node_status",
       "title": "Get Node Status",
       "description": "Node resources (memory, CPU). Requires Sys.Audit",
       "category": "investigation",
@@ -1197,6 +1220,7 @@
     },
     {
       "operation": "get_storage_status",
+      "annotation": "get_storage_status",
       "title": "Get Storage Status",
       "description": "Storage, templates and VM status (disk total/free/used). Requires Datastore.Audit",
       "category": "investigation",
@@ -1229,6 +1253,7 @@
     },
     {
       "operation": "get_storage_content",
+      "annotation": "get_storage_content",
       "title": "Get Storage Content",
       "description": "Storage content (templates, images). Requires Datastore.Audit",
       "category": "investigation",
@@ -1277,7 +1302,7 @@
       "annotation": "disable_vm_ha",
       "title": "Disable VM HA",
       "description": "Remove a specific VM from HA setup, it becomes standalone",
-      "category": "investigation",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -1299,9 +1324,10 @@
     },
     {
       "operation": "api_request",
+      "annotation": "api_request",
       "title": "API Request (Generic)",
       "description": "Generic API request (GET/POST/PUT/DELETE) for arbitrary endpoints",
-      "category": "investigation",
+      "category": "miscellaneous",
       "visible": true,
       "enabled": true,
       "parameters": [
