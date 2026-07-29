@@ -10,7 +10,7 @@
   "cs_approved": false,
   "cs_compatible": true,
   "category": "Compute Platform",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/proxmox-ve-hypervisor/100/proxmox-ve-hypervisor-v1-0-0",
   "configuration": {
     "fields": [
       {
@@ -21,8 +21,8 @@
         "visible": true,
         "required": true,
         "placeholder": "192.168.1.100",
-        "tooltip": "IP address or hostname of the Proxmox VE server",
-        "description": "Hostname or IP address of the Proxmox VE server."
+        "tooltip": "Specify the hostname or IP address of the Proxmox VE server to which you will connect and perform the automated operations.",
+        "description": "Specify the hostname or IP address of the Proxmox VE server to which you will connect and perform the automated operations."
       },
       {
         "name": "port",
@@ -32,8 +32,8 @@
         "visible": true,
         "required": true,
         "value": 8006,
-        "tooltip": "Proxmox API port (default: 8006).",
-        "description": "Proxmox API port (default: 8006)."
+        "tooltip": "Specify the port of the Proxmox VE API. By default, this is set to 8006.",
+        "description": "Specify the port of the Proxmox VE API. By default, this is set to 8006."
       },
       {
         "name": "token_id",
@@ -43,8 +43,8 @@
         "visible": true,
         "required": true,
         "placeholder": "root@pam!TokenID",
-        "tooltip": "Token ID in the format user@authentication_method!TokenID (as displayed on Proxmox WebUI)",
-        "description": "Token ID in the format user@authentication_method!TokenID (as displayed on Proxmox WebUI)"
+        "tooltip": "Specify the token ID used to access the Proxmox VE API, in the format user@authentication_method!TokenID, as displayed in the Proxmox web interface.",
+        "description": "Specify the token ID used to access the Proxmox VE API, in the format user@authentication_method!TokenID, as displayed in the Proxmox web interface."
       },
       {
         "name": "token_secret",
@@ -54,8 +54,8 @@
         "visible": true,
         "required": true,
         "placeholder": "d415390e-16ff-4377-bfb7-42c6d7ff1cbs",
-        "tooltip": "Token Secret (Copy/Paste from Proxmox WebUI)",
-        "description": "Token Secret (Copy/Paste from Proxmox WebUI)"
+        "tooltip": "Specify the token secret that is associated with the token ID, as displayed in the Proxmox web interface.",
+        "description": "Specify the token secret that is associated with the token ID, as displayed in the Proxmox web interface."
       },
       {
         "name": "node",
@@ -65,8 +65,8 @@
         "visible": true,
         "required": true,
         "placeholder": "pve",
-        "tooltip": "Default node name (for example pve). Used when no node parameter is provided in the playbook.",
-        "description": "Default node name (for example pve). Used when no node parameter is provided in the playbook."
+        "tooltip": "Specify the name of the node, for example pve, to use when a playbook does not provide a node parameter.",
+        "description": "Specify the name of the node, for example pve, to use when a playbook does not provide a node parameter."
       },
       {
         "name": "verify_ssl",
@@ -76,8 +76,8 @@
         "visible": true,
         "required": false,
         "value": false,
-        "description": "Verify the server SSL certificate (default: false for testing).",
-        "tooltip": "Verify the server SSL certificate (default: false for testing)."
+        "description": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is not selected, i.e., set to false.",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is not selected, i.e., set to false."
       }
     ]
   },
@@ -86,8 +86,8 @@
       "operation": "get_version",
       "annotation": "get_version",
       "title": "Get Version",
-      "description": "Returns the Proxmox VE version",
-      "category": "investigation",
+      "description": "Retrieves the version of the Proxmox VE server.",
+      "category": "utilities",
       "parameters": [],
       "enabled": true,
       "output_schema": {
@@ -100,7 +100,7 @@
       "operation": "get_cluster_ha_status",
       "annotation": "get_cluster_ha_status",
       "title": "Get Cluster HA Status",
-      "description": "Returns the HA status for the entire cluster, VMs included",
+      "description": "Retrieves the high availability (HA) status of the entire cluster, including its VMs, or of a single VM based on the VMID filter that you have specified.",
       "category": "investigation",
       "enabled": true,
       "parameters": [
@@ -111,8 +111,8 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Returns HA status for VMID",
-          "description": "Returns HA status for VMID"
+          "tooltip": "Specify the VMID of the VM whose HA status you want to retrieve. If you do not specify a VMID, this operation returns the HA status for the entire cluster.",
+          "description": "(Optional) Specify the VMID of the VM whose HA status you want to retrieve. If you do not specify a VMID, this operation returns the HA status for the entire cluster."
         }
       ],
       "output_schema": {
@@ -123,8 +123,8 @@
       "operation": "get_next_vmid",
       "annotation": "get_next_vmid",
       "title": "Get Next VMID",
-      "description": "Returns the next available VMID",
-      "category": "investigation",
+      "description": "Retrieves the next available VMID on the Proxmox VE server.",
+      "category": "utilities",
       "enabled": true,
       "parameters": [
       ],
@@ -136,30 +136,10 @@
       "operation": "clone_vm",
       "title": "Clone VM",
       "annotation": "clone_vm",
-      "description": "Clones a VM from a template",
+      "description": "Clones a VM from a template based on the node, template VMID, new VMID, name, and storage that you have specified.",
       "category": "remediation",
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (for example pve)",
-          "description": "Proxmox node name (for example pve)"
-        },
-        {
-          "name": "target_node",
-          "title": "Target Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "If you want to clone to a different Proxmox node than the source, specify it here.",
-          "description": "If you want to clone to a different Proxmox node than the source, specify it here."
-        },
         {
           "name": "vmid",
           "title": "Template VMID",
@@ -167,8 +147,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "VMID of the template",
-          "description": "VMID of the template"
+          "tooltip": "Specify the VMID of the template that you want to clone.",
+          "description": "Specify the VMID of the template that you want to clone."
         },
         {
           "name": "newid",
@@ -177,8 +157,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "VMID of the new VM",
-          "description": "VMID of the new VM"
+          "tooltip": "Specify the VMID to assign to the new VM.",
+          "description": "Specify the VMID to assign to the new VM."
         },
         {
           "name": "name",
@@ -187,18 +167,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Name of the new VM",
-          "description": "Name of the new VM"
-        },
-        {
-          "name": "pool",
-          "title": "Pool Name",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Name of the Pool where you want to clone this VM",
-          "description": "Name of the Pool where you want to clone this VM"
+          "tooltip": "Specify the name to assign to the new VM.",
+          "description": "Specify the name to assign to the new VM."
         },
         {
           "name": "storage",
@@ -207,8 +177,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Storage for the VM disk",
-          "description": "Storage for the VM disk"
+          "tooltip": "Specify the storage on which to create the disk of the new VM.",
+          "description": "Specify the storage on which to create the disk of the new VM."
         },
         {
           "name": "full",
@@ -217,19 +187,49 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Select this option to create a full clone. If you do not select this option, a linked clone is created. By default, this option is selected.",
           "value": true,
-          "description": "Full clone (1) or linked clone (0)"
+          "description": "Select this option to create a full clone. If you do not select this option, a linked clone is created. By default, this option is selected."
         },
         {
           "name": "timeout",
-          "title": "Clone wait timeout (seconds)",
+          "title": "Clone Wait Timeout (seconds)",
           "type": "integer",
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Max seconds to wait for clone task (default 1800). Increase for large full clones.",
-          "description": "Max seconds to wait for clone task (default 1800). Increase for large full clones."
+          "tooltip": "Specify the maximum time, in seconds, to wait for the clone task to complete. By default, this is set to 1800 seconds. Increase this value for large full clones.",
+          "description": "Specify the maximum time, in seconds, to wait for the clone task to complete. By default, this is set to 1800 seconds. Increase this value for large full clones."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the template resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the template resides. If you do not specify a node, the connector uses the default node name from its configuration."
+        },
+        {
+          "name": "target_node",
+          "title": "Target Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node on which to create the clone, if it differs from the source node.",
+          "description": "(Optional) Specify the name of the Proxmox node on which to create the clone, if it differs from the source node."
+        },
+        {
+          "name": "pool",
+          "title": "Pool Name",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the pool in which you want to create the new VM.",
+          "description": "(Optional) Specify the name of the pool in which you want to create the new VM."
         }
       ],
       "output_schema": {
@@ -241,7 +241,7 @@
       "operation": "migrate_vm",
       "annotation": "migrate_vm",
       "title": "Migrate VM",
-      "description": "Migrate VM to a new proxmox Node",
+      "description": "Migrates a VM to a different Proxmox node based on the node, target node, and VMID that you have specified.",
       "category": "remediation",
       "visible": true,
       "enabled": true,
@@ -253,8 +253,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Destination proxmox node where to migrate the VM",
-          "description": "Destination proxmox node where to migrate the VM"
+          "tooltip": "Specify the name of the Proxmox node to which you want to migrate the VM.",
+          "description": "Specify the name of the Proxmox node to which you want to migrate the VM."
         },
         {
           "name": "current_node",
@@ -263,8 +263,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Current proxmox node where VM is deployed",
-          "description": "Current proxmox node where VM is deployed"
+          "tooltip": "Specify the name of the Proxmox node on which the VM is currently deployed.",
+          "description": "Specify the name of the Proxmox node on which the VM is currently deployed."
         },
         {
           "name": "vmid",
@@ -273,8 +273,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "VMID of the VM to Migrate",
-          "description": "VMID of the VM to Migrate"
+          "tooltip": "Specify the VMID of the VM that you want to migrate.",
+          "description": "Specify the VMID of the VM that you want to migrate."
         },
         {
           "name": "online",
@@ -283,8 +283,8 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "If set, the migration will be performed online (live migration).",
-          "description": "If set, the migration will be performed online (live migration)."
+          "tooltip": "Select this option to perform the migration online, as a live migration.",
+          "description": "(Optional) Select this option to perform the migration online, as a live migration."
         },
         {
           "name": "with_conntrack_state",
@@ -293,8 +293,8 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "If set, the migration will preserve conntrack state.",
-          "description": "If set, the migration will preserve conntrack state."
+          "tooltip": "Select this option to preserve the conntrack state during the migration.",
+          "description": "(Optional) Select this option to preserve the conntrack state during the migration."
         }
       ],
       "output_schema": {
@@ -306,21 +306,11 @@
       "operation": "create_container",
       "annotation": "create_container",
       "title": "Create Container",
-      "description": "Creates an LXC container",
+      "description": "Creates an LXC container based on the node, VMID, hostname, OS template, and resource settings that you have specified.",
       "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name",
-          "description": "Proxmox node name"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -328,8 +318,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Container VMID"
+          "tooltip": "Specify the VMID to assign to the container.",
+          "description": "Specify the VMID to assign to the container."
         },
         {
           "name": "hostname",
@@ -338,8 +328,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Hostname of the container"
+          "tooltip": "Specify the hostname to assign to the container.",
+          "description": "Specify the hostname to assign to the container."
         },
         {
           "name": "ostemplate",
@@ -348,8 +338,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Template (for example local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst)"
+          "tooltip": "Specify the OS template from which to create the container, for example local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst.",
+          "description": "Specify the OS template from which to create the container, for example local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst."
         },
         {
           "name": "cores",
@@ -358,9 +348,9 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Specify the number of CPU cores to allocate to the container. By default, this is set to 2.",
           "value": 2,
-          "description": "Number of CPU cores"
+          "description": "Specify the number of CPU cores to allocate to the container. By default, this is set to 2."
         },
         {
           "name": "memory",
@@ -369,9 +359,9 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Specify the amount of RAM, in MB, to allocate to the container. By default, this is set to 2048.",
           "value": 2048,
-          "description": "RAM in MB"
+          "description": "Specify the amount of RAM, in MB, to allocate to the container. By default, this is set to 2048."
         },
         {
           "name": "rootfs",
@@ -380,8 +370,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "for example local-lvm:20"
+          "tooltip": "Specify the root file system of the container, for example local-lvm:20.",
+          "description": "Specify the root file system of the container, for example local-lvm:20."
         },
         {
           "name": "net0",
@@ -390,8 +380,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "net0 configuration (name=eth0,bridge=vmbr0,ip=.../24,gw=...)"
+          "tooltip": "Specify the configuration of the net0 network interface, for example name=eth0,bridge=vmbr0,ip=.../24,gw=....",
+          "description": "Specify the configuration of the net0 network interface, for example name=eth0,bridge=vmbr0,ip=.../24,gw=...."
         },
         {
           "name": "password",
@@ -400,8 +390,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Root password"
+          "tooltip": "Specify the root password to set on the container.",
+          "description": "Specify the root password to set on the container."
         },
         {
           "name": "swap",
@@ -410,9 +400,9 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Specify the amount of swap space, in MB, to allocate to the container. By default, this is set to 0.",
           "value": 0,
-          "description": "Swap in MB"
+          "description": "Specify the amount of swap space, in MB, to allocate to the container. By default, this is set to 0."
         },
         {
           "name": "nameserver",
@@ -421,8 +411,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "DNS (for example 1.1.1.1)"
+          "tooltip": "Specify the DNS server to configure on the container, for example 1.1.1.1.",
+          "description": "Specify the DNS server to configure on the container, for example 1.1.1.1."
         },
         {
           "name": "unprivileged",
@@ -431,9 +421,9 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Select this option to create an unprivileged container. If you do not select this option, a privileged container is created. By default, this option is selected, together with nesting=1.",
           "value": true,
-          "description": "Create unprivileged container (0=privileged, 1=unprivileged). Default true (unprivileged + nesting=1)."
+          "description": "Select this option to create an unprivileged container. If you do not select this option, a privileged container is created. By default, this option is selected, together with nesting=1."
         },
         {
           "name": "features",
@@ -442,8 +432,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "LXC features (e.g. nesting=1). Use nesting=1 for console/nesting support."
+          "tooltip": "Specify the LXC features to enable on the container, for example nesting=1. Use nesting=1 for console and nesting support.",
+          "description": "Specify the LXC features to enable on the container, for example nesting=1. Use nesting=1 for console and nesting support."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which to create the container. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which to create the container. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -455,21 +455,11 @@
       "operation": "config_container",
       "annotation": "config_container",
       "title": "Configure Container",
-      "description": "Updates LXC container config (e.g. features=nesting=1, unprivileged). Use after create if create API ignored these.",
+      "description": "Updates the configuration of an LXC container based on the node, VMID, and body parameters that you have specified. Use this operation after you create a container if the create operation did not apply settings such as features or unprivileged.",
       "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -477,8 +467,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Container VMID"
+          "tooltip": "Specify the VMID of the container that you want to configure.",
+          "description": "Specify the VMID of the container that you want to configure."
         },
         {
           "name": "body_params",
@@ -487,8 +477,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Config as JSON (e.g. {\"features\": \"nesting=1\", \"unprivileged\": 0})"
+          "tooltip": "Specify the configuration to apply to the container, in JSON format, for example {\"features\": \"nesting=1\", \"unprivileged\": 0}.",
+          "description": "Specify the configuration to apply to the container, in JSON format, for example {\"features\": \"nesting=1\", \"unprivileged\": 0}."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -498,21 +498,11 @@
       "operation": "config_vm",
       "annotation": "config_vm",
       "title": "Configure VM",
-      "description": "Configures a VM (for example cloud-init, networking)",
+      "description": "Updates the configuration of a VM, such as its cloud-init or networking settings, based on the node, VMID, and body parameters that you have specified.",
       "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -532,6 +522,16 @@
           "editable": true,
           "tooltip": "",
           "description": "Parameters as JSON object (for example ipconfig0, nameserver, ciuser)"
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -541,21 +541,11 @@
       "operation": "resize_vm_disk",
       "annotation": "resize_vm_disk",
       "title": "Resize VM Disk",
-      "description": "Resizes a QEMU disk (qm resize). Use target_gb to grow to the requested size, or size for explicit +10G / 32G.",
+      "description": "Resizes a disk that is attached to a VM based on the node, VMID, disk ID, and size that you have specified.",
       "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -563,8 +553,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "VMID of the VM"
+          "tooltip": "Specify the VMID of the VM whose disk you want to resize.",
+          "description": "Specify the VMID of the VM whose disk you want to resize."
         },
         {
           "name": "disk",
@@ -573,9 +563,9 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Specify the ID of the disk that you want to resize. By default, this is set to scsi0.",
           "value": "scsi0",
-          "description": "Disk id (default scsi0)"
+          "description": "Specify the ID of the disk that you want to resize. By default, this is set to scsi0."
         },
         {
           "name": "target_gb",
@@ -584,18 +574,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Grow boot disk to this size in GB (skips if already larger)"
+          "tooltip": "Specify the size, in GB, to which you want to grow the boot disk. This operation is skipped if the disk is already larger than this size.",
+          "description": "Specify the size, in GB, to which you want to grow the boot disk. This operation is skipped if the disk is already larger than this size."
         },
         {
           "name": "assume_current_gb",
-          "title": "Assume current size (GB)",
+          "title": "Assume Current Size (GB)",
           "type": "integer",
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Fallback when qm config has no readable size (e.g. template default 10)"
+          "tooltip": "Specify the size, in GB, to assume as the current disk size when the VM Assume current configuration does not report a readable size, for example the default of size (GB) 10 GB in a template.",
+          "description": "Specify the size, in GB, to assume as the current disk size when the VM Assume current configuration does not report a readable size, for example the default of size (GB) 10 GB in a template."
         },
         {
           "name": "size",
@@ -604,18 +594,28 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Explicit resize, e.g. +10G or 32G (used when target_gb is omitted)"
+          "tooltip": "Specify an explicit resize value, for example +10G or 32G. This parameter is used only when you do not specify a target size.",
+          "description": "Specify an explicit resize value, for example +10G or 32G. This parameter is used only when you do not specify a target size."
         },
         {
           "name": "timeout",
-          "title": "Resize wait timeout (seconds)",
+          "title": "Resize Wait Timeout (seconds)",
           "type": "integer",
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Max seconds to wait for resize task (default 600)"
+          "tooltip": "Specify the maximum time, in seconds, to wait for the resize task to complete. By default, this is set to 600 seconds.",
+          "description": "Specify the maximum time, in seconds, to wait for the resize task to complete. By default, this is set to 600 seconds."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -627,21 +627,11 @@
       "operation": "update_vm_cloudinit",
       "annotation": "update_vm_cloudinit",
       "title": "Update VM Cloud-Init",
-      "description": "Regenerates the cloud-init drive after config changes (qm cloudinit update)",
+      "description": "Regenerates the cloud-init drive of a VM after its configuration has changed, based on the node and VMID that you have specified.",
       "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -649,8 +639,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "VMID of the VM"
+          "tooltip": "Specify the VMID of the VM whose cloud-init drive you want to regenerate.",
+          "description": "Specify the VMID of the VM whose cloud-init drive you want to regenerate."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -660,21 +660,11 @@
       "operation": "start_vm",
       "annotation": "start_vm",
       "title": "Start VM",
-      "description": "Starts a VM",
+      "description": "Starts a VM based on the node and VMID that you have specified.",
       "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -682,8 +672,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "VMID of the VM"
+          "tooltip": "Specify the VMID of the VM that you want to start.",
+          "description": "Specify the VMID of the VM that you want to start."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -695,21 +695,11 @@
       "operation": "stop_vm",
       "annotation": "stop_vm",
       "title": "Stop VM",
-      "description": "Stops a VM",
-      "category": "containment",
+      "description": "Stops a VM based on the node and VMID that you have specified.",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -717,8 +707,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "VMID of the VM"
+          "tooltip": "Specify the VMID of the VM that you want to stop.",
+          "description": "Specify the VMID of the VM that you want to stop."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -730,21 +730,11 @@
       "operation": "start_container",
       "annotation": "start_container",
       "title": "Start Container",
-      "description": "Starts an LXC container",
+      "description": "Starts an LXC container based on the node and VMID that you have specified.",
       "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -752,8 +742,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "VMID of the container"
+          "tooltip": "Specify the VMID of the container that you want to start.",
+          "description": "Specify the VMID of the container that you want to start."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -765,21 +765,11 @@
       "operation": "stop_container",
       "annotation": "stop_container",
       "title": "Stop Container",
-      "description": "Stops an LXC container",
-      "category": "containment",
+      "description": "Stops an LXC container based on the node and VMID that you have specified.",
+      "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -787,8 +777,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "VMID of the container"
+          "tooltip": "Specify the VMID of the container that you want to stop.",
+          "description": "Specify the VMID of the container that you want to stop."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -800,21 +800,11 @@
       "operation": "destroy_vm",
       "annotation": "destroy_vm",
       "title": "Destroy VM",
-      "description": "Deletes a VM (optional purge=1)",
+      "description": "Deletes a VM based on the node and VMID that you have specified.",
       "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -822,8 +812,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "VMID of the VM"
+          "tooltip": "Specify the VMID of the VM that you want to delete.",
+          "description": "Specify the VMID of the VM that you want to delete."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration"
         },
         {
           "name": "purge",
@@ -832,9 +832,9 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Select this option to also delete the unused volumes that belong to the VM. By default, this option is selected.",
           "value": true,
-          "description": "Also delete unused volumes"
+          "description": "(Optional) Select this option to also delete the unused volumes that belong to the VM. By default, this option is selected."
         },
         {
           "name": "destroy-unreferenced-disks",
@@ -843,9 +843,9 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Select this option to also delete the unreferenced disks that are owned by the VM. By default, this option is selected.",
           "value": true,
-          "description": "Also delete unreferenced disks owned by this VM"
+          "description": "(Optional) Select this option to also delete the unreferenced disks that are owned by the VM. By default, this option is selected."
         }
       ],
       "output_schema": {
@@ -856,21 +856,11 @@
       "operation": "destroy_container",
       "annotation": "destroy_container",
       "title": "Destroy Container",
-      "description": "Deletes an LXC container",
+      "description": "Deletes an LXC container based on the node and VMID that you have specified.",
       "category": "remediation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -878,8 +868,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "VMID of the container"
+          "tooltip": "Specify the VMID of the container that you want to delete.",
+          "description": "Specify the VMID of the container that you want to delete."
         },
         {
           "name": "force",
@@ -888,9 +878,19 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Select this option to forcibly stop a running container before it is destroyed. By default, this option is not selected.",
           "value": false,
-          "description": "Force stop running container before destroying (force=1)"
+          "description": "Select this option to forcibly stop a running container before it is destroyed. By default, this option is not selected."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -901,11 +901,22 @@
       "operation": "list_vms",
       "annotation": "list_vms",
       "title": "List VMs",
-      "description": "Lists all VMs on the node (GET /nodes/{node}/qemu). Optionally include config (disks, net) per VM.",
+      "description": "Retrieves a list of all VMs on a node, optionally including the configuration of each VM, based on the node that you have specified.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
       "parameters": [
+        {
+          "name": "include_config",
+          "title": "Include Config",
+          "type": "checkbox",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "tooltip": "Select this option to also retrieve the configuration, such as the disks and network interfaces, of each VM. Selecting this option results in additional API calls. By default, this option is not selected.",
+          "description": "Select this option to also retrieve the configuration, such as the disks and network interfaces, of each VM. Selecting this option results in additional API calls. By default, this option is not selected."
+        },
         {
           "name": "node",
           "title": "Node",
@@ -913,19 +924,8 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
-        {
-          "name": "include_config",
-          "title": "Include config",
-          "type": "checkbox",
-          "required": true,
-          "visible": true,
-          "editable": true,
-          "value": false,
-          "tooltip": "If true, fetch config (disks, network) for each VM (more API calls)",
-          "description": "If true, fetch config (disks, network) for each VM (more API calls)"
+          "tooltip": "Specify the name of the Proxmox node, for example pve, whose VMs you want to list. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, whose VMs you want to list. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -947,11 +947,21 @@
       "operation": "list_containers",
       "annotation": "list_containers",
       "title": "List Containers",
-      "description": "Lists all LXC containers on the node (GET /nodes/{node}/lxc). Optionally include config (rootfs, mp, net) per container.",
+      "description": "Retrieves a list of all LXC containers on a node, optionally including the configuration of each container, based on the node that you have specified.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
       "parameters": [
+        {
+          "name": "include_config",
+          "title": "Include Config",
+          "type": "checkbox",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select this option to also retrieve the configuration, such as the disks and network interfaces, of each container. Selecting this option results in additional API calls.",
+          "description": "Select this option to also retrieve the configuration, such as the disks and network interfaces, of each container. Selecting this option results in additional API calls."
+        },
         {
           "name": "node",
           "title": "Node",
@@ -959,18 +969,8 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
-        {
-          "name": "include_config",
-          "title": "Include config",
-          "type": "checkbox",
-          "required": true,
-          "visible": true,
-          "editable": true,
-          "tooltip": "",
-          "description": "If true, fetch config (disks, network) for each container (more API calls)"
+          "tooltip": "Specify the name of the Proxmox node, for example pve, whose containers you want to list. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, whose containers you want to list. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -992,21 +992,11 @@
       "operation": "get_vm_config",
       "annotation": "get_vm_config",
       "title": "Get VM Config",
-      "description": "VM config (disks, network interfaces). For use in inventory sync.",
+      "description": "Retrieves the configuration of a VM, including its disks and network interfaces, based on the node and VMID that you have specified. Use this operation for inventory synchronization.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -1014,8 +1004,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "ID of the VM",
-          "description": "ID of the VM"
+          "tooltip": "Specify the VMID of the VM whose configuration you want to retrieve.",
+          "description": "Specify the VMID of the VM whose configuration you want to retrieve."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -1025,21 +1025,11 @@
       "operation": "get_container_config",
       "annotation": "get_container_config",
       "title": "Get Container Config",
-      "description": "Container config (rootfs, mp, network interfaces). For use in inventory sync.",
+      "description": "Retrieves the configuration of an LXC container, including its root file system, mount points, and network interfaces, based on the node and VMID that you have specified. Use this operation for inventory synchronization.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -1047,8 +1037,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "VMID of the container"
+          "tooltip": "Specify the VMID of the container whose configuration you want to retrieve.",
+          "description": "Specify the VMID of the container whose configuration you want to retrieve."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -1058,21 +1058,11 @@
       "operation": "get_task_status",
       "annotation": "get_task_status",
       "title": "Get Task Status",
-      "description": "Status of an asynchronous task (for example clone job, UPID from response)",
+      "description": "Retrieves the status of an asynchronous task, such as a clone job, based on the node and UPID that you have specified.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "upid",
           "title": "UPID",
@@ -1080,9 +1070,19 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Task UPID (for example UPID:pve:00001234:...)",
+          "tooltip": "Specify the UPID of the task whose status you want to retrieve, for example UPID:pve:00001234:....",
+          "description": "Specify the UPID of the task whose status you want to retrieve, for example UPID:pve:00001234:....",
           "placeholder": "UPID:pve:00001234:5678:90ABCDEF:qmclone:2000:root@pam:"
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the task is running. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the task is running. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -1092,7 +1092,7 @@
       "operation": "get_nodes",
       "annotation": "get_nodes",
       "title": "Get Nodes",
-      "description": "List of all cluster nodes and their status (online/offline)",
+      "description": "Retrieves a list of all nodes in the cluster, along with their online or offline status.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
@@ -1107,7 +1107,7 @@
       "operation": "get_cluster_resources",
       "annotation": "get_cluster_resources",
       "title": "Get Cluster Resources",
-      "description": "Cluster resources (optionally filter by type=node|vm|storage)",
+      "description": "Retrieves the resources that are available in the cluster based on the type filter that you have specified.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
@@ -1120,8 +1120,8 @@
           "visible": true,
           "editable": true,
           "placeholder": "node",
-          "description": "Optional: node, vm, storage. Returns all if not specified",
-          "tooltip": "Optional: node, vm, storage. Returns all if not specified"
+          "description": "(Optional) Specify the type of resource by which you want to filter the results: node, vm, or storage. If you do not specify a type, this operation returns all resources.",
+          "tooltip": "Specify the type of resource by which you want to filter the results: node, vm, or storage. If you do not specify a type, this operation returns all resources."
         }
       ],
       "output_schema": {
@@ -1133,21 +1133,11 @@
       "operation": "get_vm_status",
       "annotation": "get_vm_status",
       "title": "Get VM Status",
-      "description": "Detailed status of a VM (running/stopped). Requires VM.Audit on the VM",
+      "description": "Retrieves the detailed status of a VM, including whether it is running or stopped, based on the node and VMID that you have specified. This operation requires the VM.Audit privilege on the VM.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -1155,8 +1145,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "VMID of the VM",
-          "description": "VMID of the VM"
+          "tooltip": "Specify the VMID of the VM whose status you want to retrieve.",
+          "description": "Specify the VMID of the VM whose status you want to retrieve."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the VM resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -1166,21 +1166,11 @@
       "operation": "get_container_status",
       "annotation": "get_container_status",
       "title": "Get Container Status",
-      "description": "Detailed status of a container (running/stopped). Requires VM.Audit",
+      "description": "Retrieves the detailed status of an LXC container, including whether it is running or stopped, based on the node and VMID that you have specified. This operation requires the VM.Audit privilege.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "vmid",
           "title": "VMID",
@@ -1188,8 +1178,18 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "VMID of the container"
+          "tooltip": "Specify the VMID of the container whose status you want to retrieve.",
+          "description": "Specify the VMID of the container whose status you want to retrieve."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the container resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -1199,7 +1199,7 @@
       "operation": "get_node_status",
       "annotation": "get_node_status",
       "title": "Get Node Status",
-      "description": "Node resources (memory, CPU). Requires Sys.Audit",
+      "description": "Retrieves the resource usage of a node, including its memory and CPU, based on the node that you have specified. This operation requires the Sys.Audit privilege.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
@@ -1211,8 +1211,8 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "description": "Proxmox node name (optional, uses connector default if empty)",
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)"
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, whose status you want to retrieve. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "tooltip": "Specify the name of the Proxmox node, for example pve, whose status you want to retrieve. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -1222,21 +1222,11 @@
       "operation": "get_storage_status",
       "annotation": "get_storage_status",
       "title": "Get Storage Status",
-      "description": "Storage, templates and VM status (disk total/free/used). Requires Datastore.Audit",
+      "description": "Retrieves the status of a storage, including its total, used, and available disk space, based on the node and storage ID that you have specified. This operation requires the Datastore.Audit privilege.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "description": "Proxmox node name (optional, uses connector default if empty)",
-          "tooltip": "Proxmox node name (optional, uses connector default if empty)"
-        },
         {
           "name": "storage",
           "title": "Storage ID",
@@ -1244,8 +1234,18 @@
           "required": true,
           "editable": true,
           "visible": true,
-          "description": "Storage ID (for example local)",
-          "tooltip": "Storage ID (for example local)"
+          "description": "Specify the ID of the storage whose status you want to retrieve, for example local.",
+          "tooltip": "Specify the ID of the storage whose status you want to retrieve, for example local."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the storage resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the storage resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -1255,30 +1255,20 @@
       "operation": "get_storage_content",
       "annotation": "get_storage_content",
       "title": "Get Storage Content",
-      "description": "Storage content (templates, images). Requires Datastore.Audit",
+      "description": "Retrieves the content of a storage, such as its templates and images, based on the node, storage ID, and content filter that you have specified. This operation requires the Datastore.Audit privilege.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
       "parameters": [
         {
-          "name": "node",
-          "title": "Node",
-          "type": "text",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "",
-          "description": "Proxmox node name (optional, uses connector default if empty)"
-        },
-        {
           "name": "storage",
-          "title": "Storage",
+          "title": "Storage ID",
           "type": "text",
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
-          "description": "Storage ID (for example local)"
+          "tooltip": "Specify the ID of the storage whose content you want to retrieve, for example local.",
+          "description": "Specify the ID of the storage whose content you want to retrieve, for example local."
         },
         {
           "name": "content",
@@ -1287,9 +1277,19 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Specify a comma-separated list of content types by which you want to filter the results, for example vztmpl, iso, or images.",
           "placeholder": "vztmpl,iso",
-          "description": "Optional: vztmpl, iso, images (comma-separated)"
+          "description": "Specify a comma-separated list of content types by which you want to filter the results, for example vztmpl, iso, or images."
+        },
+        {
+          "name": "node",
+          "title": "Node",
+          "type": "text",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the Proxmox node, for example pve, on which the storage resides. If you do not specify a node, the connector uses the default node name from its configuration.",
+          "description": "(Optional) Specify the name of the Proxmox node, for example pve, on which the storage resides. If you do not specify a node, the connector uses the default node name from its configuration."
         }
       ],
       "output_schema": {
@@ -1301,7 +1301,7 @@
       "operation": "disable_vm_ha",
       "annotation": "disable_vm_ha",
       "title": "Disable VM HA",
-      "description": "Remove a specific VM from HA setup, it becomes standalone",
+      "description": "Removes a VM from the high availability (HA) configuration, so that it operates as a standalone VM, based on the VMID that you have specified.",
       "category": "remediation",
       "visible": true,
       "enabled": true,
@@ -1313,8 +1313,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "ID of the VM to remove from HA",
-          "description": "ID of the VM to remove from HA"
+          "tooltip": "Specify the VMID of the VM that you want to remove from the HA\nconfiguration.",
+          "description": "Specify the VMID of the VM that you want to remove from the HA\nconfiguration."
         }
       ],
       "output_schema": {
@@ -1326,7 +1326,7 @@
       "operation": "api_request",
       "annotation": "api_request",
       "title": "API Request (Generic)",
-      "description": "Generic API request (GET/POST/PUT/DELETE) for arbitrary endpoints",
+      "description": "Sends a request to any Proxmox VE API endpoint based on the method, endpoint, request headers, and body that you have specified.",
       "category": "miscellaneous",
       "visible": true,
       "enabled": true,
@@ -1338,14 +1338,14 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Select the HTTP method to use for the request. You can choose from the following options: GET, POST, PUT, or DELETE.",
           "options": [
             "GET",
             "POST",
             "PUT",
             "DELETE"
           ],
-          "description": "HTTP method"
+          "description": "Select the HTTP method to use for the request. You can choose from the following options: GET, POST, PUT, or DELETE."
         },
         {
           "name": "endpoint",
@@ -1354,9 +1354,9 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "",
+          "tooltip": "Specify the path of the API endpoint, after /api2/json/ and without a leading slash.",
           "placeholder": "/api2/json/nodes/pve/status",
-          "description": "Path starting after /api2/json/ (without leading slash)"
+          "description": "Specify the path of the API endpoint, after /api2/json/ and without a leading slash."
         },
         {
           "name": "headers",
@@ -1365,8 +1365,8 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Extra headers if needed",
-          "description": "Extra headers if needed"
+          "tooltip": "Specify any additional headers to send with the request.",
+          "description": "(Optional) Specify any additional headers to send with the request."
         },
         {
           "name": "body",
@@ -1375,8 +1375,8 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "JSON body for both JSON payloads and HTML forms",
-          "description": "JSON body for both JSON payloads and HTML forms"
+          "tooltip": "Specify the body of the request, in JSON format. This parameter is used for both JSON payloads and form-encoded payloads.",
+          "description": "(Optional) Specify the body of the request, in JSON format. This parameter is used for both JSON payloads and form-encoded payloads."
         }
       ],
       "output_schema": {
