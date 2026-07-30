@@ -248,7 +248,7 @@
       "parameters": [
         {
           "name": "target_node",
-          "title": "Proxmox Target Node",
+          "title": "Target Node",
           "type": "text",
           "required": true,
           "visible": true,
@@ -258,7 +258,7 @@
         },
         {
           "name": "current_node",
-          "title": "Proxmox Current Node",
+          "title": "Current Node",
           "type": "text",
           "required": true,
           "visible": true,
